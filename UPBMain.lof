@@ -1,0 +1,89 @@
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces An illustration depicting the progression of states within the Susceptible-Infected Compartmental Model. }}{13}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces An illustration depicting the progression of states within the Susceptible-Infected-Recovered Compartmental Model. }}{14}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces An illustration depicting the progression of states within the Susceptible-Exposed-Infected-Recovered Compartmental Model. }}{15}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Illustration of the simulation space of the implemented model in GAMA}}{17}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Illustration of the x and y positions of agents in a 2-D plane}}{18}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Color-coded representation of agents in the simulation, with distinct colors indicating their current health status (Susceptible,Exposed, Infected, Recovered)}}{19}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Illustration of the movement rule of the agent in the SI model.}}{20}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Exposure and Infection Rule of the SEIR Model}}{22}{figure.caption.15}%
+\addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Virtual Representation of the structure of the Shapefile in AutoCAD}}{29}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Visual representation of the shapefile image of the classrooms. The gray polygons represent the rooms}}{30}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Visual representation of the shapefile image of the quarantine area. The gray polygons represent the quarantine rooms}}{31}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Visual representation of the shapefile image of the hallway. The gray polygons represent the environment}}{32}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Visual representation of the shapefile image of the road network}}{33}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces View of the shapefile in GAMA Simulation}}{34}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Initial position of each agent in the GAMA Simulation}}{35}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Color-coded representation of agents in the simulation, with distinct colors indicating their current health status (Susceptible,Exposed, Infected, Recovered)}}{36}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Agent movement and spatial interactions within the classroom environment during scheduled class time.}}{38}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Agent movement and spatial interactions within the classroom environment during scheduled lunch, break, and end of class.}}{39}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Snapshot of an exposed agent within the GAMA simulation at a specific time.}}{40}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Snapshot of an infected agent within the GAMA simulation at a specific time.}}{42}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Snapshot of an recovered agent within the GAMA simulation at a specific time.}}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Snapshot of the GAMA Simulation with a 0\% Protection Rate, featuring int\_inf = 556, int\_exp = 556, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles. Rooms highlighted in red indicate the presence of an infected individual.}}{46}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Snapshot of the GAMA Simulation with a 25\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{48}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Snapshot of the GAMA Simulation with a 50\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{50}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Snapshot of the GAMA Simulation with a 75\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{52}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Snapshot of the GAMA Simulation with a 100\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{54}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Snapshot of the GAMA Simulation in a 0\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 0, exp\_rate = 0.0, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{56}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Snapshot of the GAMA Simulation in a 25\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{58}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Snapshot of the GAMA Simulation in a 25\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 1113, exp\_rate = 0.50, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{60}{figure.caption.56}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Snapshot of the GAMA Simulation in a 75\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 1669, exp\_rate = 0.75, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{62}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Snapshot of the GAMA Simulation in a scenario where lockdown and quarantine are are not implemented, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{65}{figure.caption.62}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Table showing the daily time schedule indicating whether an agent can move or not in a scenario where neither lockdown nor quarantine areas are implemented.}}{66}{figure.caption.63}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Snapshot of the GAMA Simulation in a scenario where lockdown is implemented but no quarantine area, featuring int\_inf = 556, int\_exp = 556, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{69}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there is no lockdown but a quarantine areas are implemented.}}{70}{figure.caption.67}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces Snapshot of the GAMA Simulation in a scenario where Quarantine Area is implemented but not lockdown, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{72}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there's no lockdown but quarantine areas are implemented.}}{73}{figure.caption.71}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Snapshot of the GAMA Simulation in a scenario where Quarantine Area and Lockdown are both implemented, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}}{76}{figure.caption.74}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there's an implementation of Lockdown and Quarantine Area}}{77}{figure.caption.75}%
+\addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 0\% Protection rate. }}{79}{figure.caption.76}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Protection rate. }}{81}{figure.caption.78}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Protection rate. }}{83}{figure.caption.80}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 75\% Protection rate. }}{85}{figure.caption.82}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 100\% Protection rate. }}{87}{figure.caption.84}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The Number of Exposed and Infected Individuals across a 220-day period in varying protection rates}}{90}{figure.caption.86}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Plot showing the number of infected individuals over time across varying protection rates. }}{92}{figure.caption.87}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Plot showing the number of the highest infection rates across different Protection Rates (0\%, 25\%. 50\%. 75\%, 100\%) }}{93}{figure.caption.88}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 0\% Exposed rate. }}{95}{figure.caption.90}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across initial 25\% Exposure rate. }}{97}{figure.caption.92}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Exposed rate. }}{99}{figure.caption.94}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 75\% Exposure rate. }}{101}{figure.caption.96}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Number of Infected Individuals Over a 220-Day Period at varying Initial Exposure Rates of 0\%, 25\%, 50\%, and 75\%}}{103}{figure.caption.98}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Plot showing the number of infected individuals across different Initial Exposure Rates (0\%, 25\%. 50\%. 75\%) }}{104}{figure.caption.99}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Plot showing the number of the highest infection rates across different Exposure Rates (0\%, 25\%. 50\%. 75\%) }}{106}{figure.caption.100}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Snapshot of the simulation when No Lockdown and No Quarantine Area was implemented.}}{108}{figure.caption.102}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals in No Lockdown and No Quarantine Area scenario. }}{109}{figure.caption.103}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Snapshot of the simulation during lunch time and end of class when lockdown is implemented}}{111}{figure.caption.105}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Lockdown and No Quarantine Area scenario. }}{111}{figure.caption.106}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Quarantine Area and No Lockdown scenario. }}{113}{figure.caption.108}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Snapshot of the simulation during lunch time and end of class when lockdown is implemented}}{115}{figure.caption.110}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Lockdown and Quarantine Area scenario. }}{116}{figure.caption.111}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Number of Infected Individuals across different varying Implementation of Lockdown and Quarantine Area}}{118}{figure.caption.113}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Plot showing the number of susceptible, exposed, infected and recovered individual over time across the four scenarios involving Lockdown and Quarantine Area }}{119}{figure.caption.114}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Plot showing the number of the highest infection rates across different scenarios involving the sneraios wiht Lockdown and Quarantine Area }}{121}{figure.caption.116}%
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}

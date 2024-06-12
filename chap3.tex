@@ -1,0 +1,858 @@
+\chapter{Methodology}
+\label{chap:Methodology}
+
+ 
+  \section{Model Implementation in PCNHS}
+ The implemented system is a stochastic agent-based model designed to simulate the transmission of respiratoru infectious disease like the COVID-19 virus within Pines City National High School (PCNHS). The agent-based models are executed within the GAMA Platform, a specialized environment for agent-based modeling and simulations.
+ 
+ In this study, we simulated a closed community residing within the confines of a shared finite environment, comprising individuals who interact with one another. This classification encapsulates the fundamental aspects of societal dynamics and interactions within the school setting. The model will utilize the SEIR (Susceptible-Exposed-Infectious-Recovered) framework, representing the different states of individuals within the school population. The susceptible \textbf{(S)} individuals, the exposed \textbf{ (E)} individuals, the infectious \textbf{ (I)} individuals, and the recovered \textbf{ (R)} individuals . 
+ 
+ \section{SEIR Model}
+ \begin{itemize}
+ 	\item Susceptible Agents - Individuals who are vulnerable to the disease but have not been infected yet. They can potentially contract the disease if exposed to it.
+ 	\item Exposed Agents - This group represents individuals who have been exposed to the pathogen (e.g., through contact with an infected person) but are not yet infectious themselves. The incubation period occurs during this stage.
+ 	\item Infected Agents -  These are individuals who are currently infected and can transmit the disease to others. They are actively contagious.
+ 	\item Recovered Agents -  Individuals who have recovered from the infection and are now immune.
+ \end{itemize}
+ 
+  \section{Parameters}
+ The following parameters are used for the general simulation of the Agent-Based Modeling in GAMA
+ \begin{table}[H] % Use [h] to indicate that you prefer the table to be placed here
+ 	\centering
+ 	\begin{tabular}{ll}
+ 	\toprule
+ 		\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+ 	\hline
+ 		init\_human\_pop & 2225\\
+ 		init\_inf & 0.25 * int\_human\_pop\\
+ 		init\_expo & exposed\_rate * int\_human\_pop \\
+ 		agent\_speed & 50.0 cm/s\\
+ 		infection\_distance & 1.8 meters\\
+ 		exp\_rate & 0.25 to 1.0\\
+ 		protection\_rate & 0 to 0.25\\
+ 		proba\_infection & 1.0 - protection\_rate\\
+ 		proba\_exposed & 0.50\\
+ 		step & 10 minutes\\
+ 		exposed\_period & 288 cycles to 1440 cycles\\
+ 		infectious\_period & 1440 cycles to 2016 cycles\\
+ 		recovered\_period & 2880 cycles to 8640 cycles\\ 
+ 		time\_cycle & 31680 cycles\\
+ 		\bottomrule
+ 	\end{tabular}
+ 	\caption{Variables used for the GAMA Simulation of the SEIR Model }
+ \end{table}
+ Furthermore, each parameters are defined by their role in the simulation, specifically
+ \begin{itemize}     
+ 	\item Let \( N \) represent the total population, initially set to 2225.
+ 	
+ 	\item \( \textbf{S(t)} \) defines the number of susceptible agents at time \( t \). The number of agents can be calculated using the formula:
+ 	\[ \textbf{S(t)} = S(t-ts) - e + s \]
+ 	where \( ts \) is the 10-minute time step simulation, \( e \) is the number of susceptible agents that become exposed at time \( t \), and \( s \) is the number of agents that become susceptible again at time \( t \). At time 0, the initial number of \( S \) is given by \( S(0) = N - E(0) - I(0) \).
+ 	
+ 	\item \textit{E(t)} represents the number of exposed agents at time \( t \), given by the formula:
+ 	\[ \textit{E(t)} = E(t - ts) - i - s + e \]
+ 	where \( s \) is the number of exposed agents that return to being susceptible agents at time \( t \), \( i \) is the number of exposed agents that become infected agents at time \( t \), and \( e \) is the number of susceptible agents that become exposed agents at time \( t \). For time 0, the number of exposed agents is set to \( E(0) = 557 \), where 25\% of \( N \) is set to be exposed. For Scenario 2, the number of exposed agents varies depending on the Exposure Rate, and the initial number of exposed agents can be obtained by:
+ 	\[ E(0) = N \times exp\_rate \]
+ 	
+ 	\item \( I(t) \) represents the number of infected agents at time \( t \), given by:
+ 	\[ \textbf{\textit{I(t)} }= I(t - ts) - r + i \]
+ 	where \( r \) is the number of infected agents that become recovered agents at time \( t \) and \( i \) is the number of exposed agents that become infected agents at time \( t \).  For the simulation, the initial number of \( I \) at the start of the simulation is 25\% of the population, given by:
+ 	\[ I(0) = N \times (0.25) \]
+ 	
+ 	\item \textit{R(t)} represents the number of recovered agents at time \( t \), given by:
+ 	\[ \textbf{\textit{R(t)}} = R(t - ts) + r \]
+ 	where \( r \) is the number of infected agents that become recovered at time \( t \). For the simulation model, the initial number of \( R \) at time 0 is given by \( R(0) = 0 \).
+ 	
+ 	\item \textit{Susceptible\_rate} represents the susceptible rate of the virus inside the campus which is given by the formula
+ 	\[
+ 	Susceptible\_rate = \frac{\textbf{\textbf{S(t)}}}{N}
+ 	\]
+ 	\item \textit{Exposure\_rate} represents the rate of exposure of the virus inside the campus at time \textit{t} which is given by
+ 	\[
+ 	Exposure\_rate = \frac{\textbf{E(t)}}{N}
+ 	\]
+ 	\item \textit{Infection\_rate} represents the infection rate of the virus inside the campus at time \textit{t} which is given by
+ 	\[
+ 	Infection\_rate = \frac{\textbf{I(t)}}{N}
+ 	\]
+ 	\item \textit{Recovery\_rate} represents the recovery rate of the virus inside the campus at time \textit{t} which is given by
+ 	\begin{equation*}
+ 		Recovery\_rate = \frac{\textbf{R(t)}}{N}
+ 	\end{equation*}
+ 	
+ 	\item \textit{agent\_speed} this refers to the movement speed of every agent inside the facility, set to \textit{50 cm/s} for the simulation.
+ 	
+ 	\item \textit{time\_step} this represents the number of minutes per cycle, set to 10 minutes per cycle.
+ 	
+ 	\item \textit{infection\_distance} this represents the distance for infection to occur. If an infected agent contacts another agent for 20 minutes, the latter will be exposed to the virus.
+ 	
+ 	\item \textit{exp\_rate} this refers to the initial number of exposed rate at time 0, ranging from 0\% to 75\%, with four levels: 0\%, 25\%, 50\%, 75\%.
+ 	
+ 	\item \textit{protection\_rate} this indicates the level of protection for each agent, ranging from 0\% to 100\%, with five protection levels: 0\%, 25\%, 50\%, 75\%, 100\%.
+ 	
+ 
+ 	
+ 	\item \textit{proba\_infection} this defines the probability of an agent becoming infected, influenced by the \textit{protection\_rate}, represented by the formula:
+ 	\[
+ 	proba\_infection = 1.0 - protection\_rate
+ 	\]
+ 	
+ 	\item \textit{proba\_exposed} this is the probability of an agent being exposed to the virus, initially set to 0.50.
+ 	
+ 	\item \textit{exposed\_period} this defines the number of incubation days for exposed agents before becoming infected or susceptible, randomly set to 2 - 10 days from the day of exposure.
+ 	
+ 	\item \textit{infectious\_period} this is the number of days an infected agent remains infectious before recovery, set to 10 - 14 days from the day of infection.
+ 	
+ 	\item \textit{recovered\_period} this is the number of days an agent is considered recovered and immune to reinfection. After this period, they can be infected again. It is set to 20-60 days.
+ 	
+ \end{itemize}
+ 
+  \section{Simulation Space of the Simulation}
+ 
+ 
+ The first step is to set up the virtual environment where the simulation would take place. This virtual space symbolized Pines City National High School (PCNHS), characterized by heightened chances of infection and interaction among its occupants. AutoCAD software facilitated the creation of classroom and hallway models. Following this, shapefiles for both classrooms and hallways were produced using the Quantum Geographic Information System (QGIS) of the school, posing a 2-dimensional coordinate plane formed by the intersection of the x-axis and y-axis. These shapefiles follow the experiment's boundaries based on the school's dimensions.
+ 
+ \subsection{Constructing the Shapefile Structure}
+ 
+ The structure of the shapefile was constructed using AutoCAD, as mentioned in the preliminaries. It allows users to create precise 2D and 3D drawings used in various industries such as architecture, engineering, construction, manufacturing, and more. AutoCAD provides a wide range of tools and features that enable users to design and document their ideas with accuracy and efficiency. 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=10cm, height=12cm]{images/CAD_shp.png}
+ 	\caption{Virtual Representation of the structure of the Shapefile in AutoCAD}
+ 	\label{cad_shp}
+ \end{figure}   
+ 
+ The simulation space was fashioned within a Euclidean complex network, demarcated by predefined lower and upper limits along the x-axis $[L_x, U_x]$ and y-axis $[L_y, U_y]$. Comprising interconnected rooms and hallways, the space was symbolized as $C = \{C_1, C_2, C_3, ..., C_n\}$, where 'n' represented the total number of rooms. The $U_y$ = 115m and $U_x$ = 105, this serves as the upper and lower bounds of the simulation respectively.\\
+ 
+\subsection{Classrooms}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=10cm, height=12cm]{images/rooms_shp.png}
+ 	\caption{Visual representation of the shapefile image of the classrooms. The gray polygons represent the rooms}
+ 	\label{rooms_shp}
+ \end{figure}   
+ 
+ The shapefile depicted in Figure \ref{rooms_shp} represents the spatial layout of the classrooms within the school premises. These rooms serve as designated locations where each agent resides or operates within the simulated environment. As the simulation progresses, the agents can move beyond the confines of their respective classrooms, facilitated by the  road network integrated into the simulation model.
+ 
+ \subsection{Quarantine Area}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=14cm, height=11cm]{images/quarantine.png}
+ 	\caption{Visual representation of the shapefile image of the quarantine area. The gray polygons represent the quarantine rooms}
+ 	\label{qua}
+ 	
+ \end{figure}   
+ 
+ The shapefile in Figure \ref{qua} represents the quarantine area in the simulation. It's where infected individuals are kept separate from others. This area is crucial in Scenario 3, where both Lockdown and Quarantine Area measures are used. By isolating infected individuals here, the simulation helps us understand how quarantine and lockdown affects the spread of disease.
+ 
+ \subsection{Environment}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=14cm, height=12cm]{images/hallways_shp.png}
+ 	\caption{Visual representation of the shapefile image of the hallway. The gray polygons represent the environment}
+ 	\label{hallways}
+ \end{figure}   
+ 
+ The shapefile illustrated in Figure \ref{hallways} provides an overview of the environmental layout surrounding the classrooms. This area encompasses the hallways, corridors, and pathways that form the road network crucial for agent movement and navigation within the simulation environment. 
+ \subsection{Road Network}
+ 
+ The shapefile depicted in Figure \ref{road_shp} provides a visual representation of the road network associated with the classrooms. This network represents the pathways and routes that agents navigate within the simulation environment, extending beyond the confines of individual classrooms to encompass movement throughout the simulated space.
+ 
+ Within this illustrated road network, agents traverse interconnected paths, corridors, and outdoor areas, enabling them to move dynamically within and between different zones of the simulated environment. Unlike the static nature of classroom spaces, the road network symbolizes the dynamic mobility and interactions that agents engage in throughout the simulation.
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=10cm, height=12cm]{images/road_shp.png}
+ 	\caption{Visual representation of the shapefile image of the road network}
+ 	\label{road_shp}
+ \end{figure}   
+ 
+ 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm, height=11cm]{images/GAMA_SHP.png}
+			%\label{GAMA3D} % Moved label inside the subfigure
+	
+		\caption{View of the shapefile in GAMA Simulation}
+		\label{GAMA3D}
+\end{figure} 
+ 
+ In Figure \ref{GAMA3D}, we are presented with a comprehensive 3D visualization of the shapefile within the GAMA simulation environment. This visualization encapsulates not only the physical environment but also integrates crucial elements such as classrooms, quarantine are and the road network shapefile. These elements collectively form the environment where the simulation unfolds, providing a rich and immersive place for agent interactions. Within this virtual space, agents navigate, collaborate, simulating dynamic exchanges and engagements akin to real-world scenarios.
+ 
+ The simulated space becomes a dynamic playground where agents move through corridors,  and traverse the interconnected pathways of the road network. 
+ 
+ After setting up the virtual simulation space for the agents, the next thing is the positioning, movement, and interaction rule of the agents. 
+ 
+ 
+ \section{ The Agents}
+ Within the simulation framework, individuals within the population are depicted as agents endowed with the capacity to navigate and interact with fellow agents within the designated simulation area. Each agent occupies a unique position within this spatial realm. Furthermore, these agents are classified into four distinct compartments: susceptible\textbf{(S}), Exposed \textbf{(E)}, Infected \textbf{(I)}, and Recovered \textbf{(R)}. This classification implies that at any given moment, an agent is situated in either the susceptible state, indicating vulnerability to infection, exposed, infected signifying an active infection within the simulation and recovered state. This provides a clear depiction of their respective health statuses within the simulated environment.
+ 
+ \subsection{Position and Assignment of Agent into the Simulation}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=13cm, height=8cm]{images/imit_pos.png}
+ 	\caption{Initial position of each agent in the GAMA Simulation}
+ 	\label{init}
+ \end{figure}
+ 
+ Figure \ref{init} offers a detailed snapshot of the initial configuration of agents within the simulation environment. Each of the 2225 agents is meticulously positioned across the space, with specific classrooms serving as their designated starting points. This initial arrangement sets the stage for the subsequent dynamics of the simulation, dictating how agents interact and move within the environment over time.
+ 
+ The positioning of agents plays a crucial role in shaping the overall trajectory of the simulation. Factors such as proximity to other agents, classroom locations, and spatial constraints all influence how agents navigate the environment and interact with one another. By examining the distribution of agents at the outset of the simulation, we can glean valuable insights into potential patterns of movement, clustering, and interaction that may emerge as the simulation progresses.
+ 
+ \subsection{State of the Agents in the Simulation}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=13cm, height=10cm]{images/agent.png}
+ 	\caption{Color-coded representation of agents in the simulation, with distinct colors indicating their current
+ 		health status (Susceptible,Exposed, Infected, Recovered)}
+ 	\label{agent}
+ \end{figure}
+ 
+ 
+ Figure \ref{agent} provides a comprehensive visualization of the diverse states that agents can assume within the simulation framework, namely Susceptible\textbf{ (S}), Exposed \textbf{(E)}, Infected\textbf{ (I)}, and Recovered\textbf{ (R)}. Each agent is meticulously categorized into one of these distinct states, signifying their susceptibility to infection, current exposure status, infectious state, or recovery status.
+ 
+ Upon closer inspection, we observe that agents are exclusively assigned to one of these states, reflecting the individual conditions they inhabit within the simulated environment. From the onset of the simulation \textit{(t=0)}, a predetermined number of agents are designated as infected or exposed, influencing the initial dynamics of disease transmission and population health outcomes.
+ 
+ Each agent is counted at every time step, enabling the precise tracking of the number of agents in each state. This process allows for the continuous tracking of state transitions and fluctuations, facilitating the generation of accurate and insightful simulation outcomes. 
+ 
+ \subsection{Movement Rule of the Agents}
+ In this phase of simulation, the movement patterns of agents within the school environment are intricately tied to specific time intervals and the structure of the school day. Each agent is characterized by a consistent speed of \textit{50 cm/s}, representing a realistic pace for movement within indoor spaces.
+ \begin{figure}[H]
+ 	\centering 
+ 	\includegraphics[width=14cm, height=10cm]{images/class.png}
+ 	\caption{Agent movement and spatial interactions within the classroom environment during scheduled class time.}
+ 	\label{classtime}
+ \end{figure}
+ 
+ The school day typically commences at 7:30 AM, showing the start of scheduled classes. During the initial period from 7:30 AM to 9:00 AM, agents' movements are primarily restricted to the confines of their respective classrooms. This restriction aligns with typical classroom activities and early morning instructional periods. This can be seen in Figure \ref{class} where the agents are inside the classrooms.
+ 
+ 
+ At 9:00 AM, a transition occurs as students are granted a 30-minute break until 9:30 AM. This break period marks a shift in movement dynamics, allowing students to venture beyond their classrooms and navigate through the school's designated road network. This simulates the movement patterns observed during breaks or transitions between classes, offering a more nuanced representation of school dynamics.
+ 
+ 
+ Following the break, at approximately 9:30 AM, agents revert to their assigned classrooms, signaling the end of the break period and a return to focused classroom activities. This cyclical pattern repeats throughout the school day, with similar movements permitted during the lunch break from 12:00 PM to 1:00 PM, offering agents another opportunity to explore the school environment beyond classroom walls. This scenario can be seen in Figure \ref{lunch} where some agents can be seen wandering outside the classrooms using the road networks.
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=14cm, height=10cm]{images/lunch.png}
+ 	\caption{    Agent movement and spatial interactions within the classroom environment during scheduled lunch, break, and end of class.}
+ 	\label{lunch}
+ \end{figure}
+ Post-lunch break, movement is once again confined within classrooms until the end of the school day, typically around 4:00 PM, mirroring the structured nature of academic schedules and classroom engagements.
+ 
+ 
+ Outside of regular school hours, from 8:00 PM until 7:00 AM the following day, agent movements are intentionally slowed down to zero. This slowdown reflects the assumption of minimal or no activity during nighttime hours when the school is officially closed, aligning with realistic expectations of school operation hours and periods of inactivity.
+ 
+ By intricately modeling movement dynamics tied to specific time intervals and school day segments, the simulation captures nuanced behaviors reflective of real-world school environments. This detailed approach ensures a more accurate representation of agent interactions and spatial dynamics within the school setting, enhancing the overall realism and analytical depth of the simulation outcomes.
+ 
+ \subsection{Transmission of the Respiratory Infectious Disease}
+ \subsubsection{Exposure Rule: Identifying if a susceptible (s) agent will get exposed}
+ 
+ 
+ For the simulation in GAMA, the rule follows:
+ \begin{itemize}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=14cm, height=10cm]{images/exposed.png}
+ 		\caption{ Snapshot of an exposed agent within the GAMA simulation at a specific time.}
+ 		\label{exposed}
+ 	\end{figure}
+ 	\item Rule 1: The model examines each susceptible agent in category S to determine if an infected agent is present within the defined neighborhood \textit{id}. If an infected agent is discovered within this neighborhood, it signifies a potential transmission event of the virus. The model sets the value of R at 1.8 meters, roughly equivalent to the distance classified as close contact with an infected individual in the context of COVID-19, which is 6 feet.
+ \end{itemize}
+ When agents within the defined \textit{infection\_distance} parameter come into contact with an infected individual for a minimum duration of 15 minutes or 2 cycles within the simulation timeframe, they face the possibility of exposure to the virus. Upon exposure, an \textit{exposed\_counter} mechanism is activated to monitor susceptible agents. This counter increments with each cycle of the simulation. If the \textit{exposed\_counter} reaches or exceeds a value of two, corresponding to approximately 20 minutes in simulation time, the susceptible agent transitions to the exposed state and will turn from blue to yellow which can be seen at Figure \ref{exposed} . 
+ 
+ Subsequently, the agent is removed from the Susceptible \textbf{(S)} group and added in the group \textbf{E}. The moment of transition to the exposed state marks the \textit{exposed\_time} for the agent, serving as a reference point for subsequent infection-related rules and events within the simulation. \\
+ 
+  \subsubsection{Infection Rule: Identifying if an exposed (e) agent will get infected}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=14cm, height=10cm]{images/infected.png}
+ 	\caption{ Snapshot of an infected agent within the GAMA simulation at a specific time.}
+ 	\label{infected}
+ \end{figure}
+ Once the incubation period of the exposed agent is done or if \textit{exposed\_time} of the exposed agent is greater than or equal to the \textit{exposed\_period} then an infection rule will be considered. 
+ 
+ \begin{itemize}
+ 	\item Rule 2: For each exposed agent \textit{e} in \textbf{E}, once the incubation period has elapsed, the likelihood of infection (\textit{proba\_infection}) determines whether the agent becomes infected. This probability heavily depends on the protection level (\textit{protection\_rate}) set in the simulation. The simulation offers five protection levels: $0\%, 25\%, 50\%, 75\%, 100\%$. The probability of infection is computed as 1.0 minus the protection level. For instance, if the \textit{protection\_rate} is $25\%$, the infection probability is $75\%$, indicating a high chance of the exposed agent getting infected. Upon infection, the agent transitions from group \textbf{E} to \textbf{I} and will turn from yellow to red as seen in Figure \ref{infected}; otherwise, it returns to susceptibility and reenters group \textbf{S}.
+ 	
+ 	The transition to the exposed state signifies the onset of the \textit{infected\_time} or the duration of infection for the agent, which is assigned an infectious period of 10-14 days. Following the completion of the infectious period, the infected agent progresses to the recovered state. \\
+ \end{itemize}
+ 
+ 
+  \subsubsection{Recovery Rule: Identifying if an infected (i) agent will recover}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=14cm, height=10cm]{images/recovered.png}
+ 	\caption{ Snapshot of an recovered agent within the GAMA simulation at a specific time.}
+ 	\label{recovered}
+ \end{figure}
+ Once the infectious period of the for the infected agent is over, a new set of recovery rule will be considered to identify if the infected agent will recover or not. 
+ 
+ \begin{itemize}
+ 	\item Rule 3: For each agent in \textbf{I}, if the \textit{infected\_time} exceeds or equals the \textit{infectious\_period}, the agent is considered recovered. Subsequently, the recovered agent transitions to group \textbf{R} and exits group \textbf{I}. In the simulation, their red color transforms to green, indicating recovery (refer to Figure \ref{recovered}). Additionally, a random recovery period between 20 to 60 days is assigned to the recovered agents, granting them immunity during this timeframe. However, once the recovery period elapses, they can become susceptible to the disease and can be infected again.
+ \end{itemize}
+
+ \section{ Simulation Scenarios}
+ 
+ 
+
+ \subsection{ Scenario 1: Varying Protection Rate}
+In this particular scenario, five sub-scenarios were executed, each with a unique set of variables and conditions. The simulation was conducted by varying the different protection rates, which ranged from 0\% to 100\%. The purpose of this simulation was to obtain accurate information about how protection rates affect the overall outcome of the scenario. By running multiple sub-scenarios, the simulation was able to take into account various factors and variables that may have affected the results. 
+
+	\subsubsection{Scenario 1.1: 0\% Protection Rate}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exposed\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 0.0\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of the Scenario 1.1 which has a 0\% Protection Rate}
+		\label{1.1}
+	\end{table}
+	
+ 	\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm, height=10cm]{images/PR1_G.png}
+		\caption{Snapshot of the GAMA Simulation with a 0\% Protection Rate, featuring int\_inf = 556, int\_exp = 556, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles. Rooms highlighted in red indicate the presence of an infected individual.}
+		\label{PR1G}
+	\end{figure}
+Table \ref{1.1} provides a detailed overview of the parameters employed in the simulation of Scenario 1.1, which aims to scrutinize the ramifications of a zero protection rate on virus transmission dynamics. In this scenario, the absence of any protective measures signifies a scenario where minimal efforts are undertaken to contain the virus. At the outset of the simulation, as per the specifications outlined in Table \ref{1.1}, the initial population consists of 2225 individuals, with 25\% of this population designated as both infected and exposed, amounting to 557 individuals each. The infection distance, representing the proximity required for transmission, is established at 1.8 meters, while the probability of an agent becoming exposed is set at 0.50. Each time step within the simulation corresponds to a duration of 10 minutes, allowing for a granular examination of infection dynamics over time. The simulation is projected to persist for a duration of 31680 cycles, equivalent to 220 days, facilitating an extensive exploration of virus transmission patterns and outcomes under the specified conditions. 
+
+	\subsubsection{ Scenario 1.2: 25\% Protection Rate}
+	\begin{table}[H]
+		\centering
+		{\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exposed\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 0.25\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of the Scenario 1.1 which has a 0\% Protection Rate}
+		\label{1.2}}
+	\end{table}
+	
+ 	\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/PR2_G.png}
+	\caption{Snapshot of the GAMA Simulation with a 25\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{PR2G}
+	\end{figure}
+Table \ref{1.2} provides a detailed overview of the parameters employed in the simulation of Scenario 1.2, which aims to observe the effect of a 25\% protection rate on virus transmission dynamics. In this scenario, minimal preventive measures are implemented here . At the outset of simulation, as per the specifications outlined in Table \ref{1.2}, the initial population consists of 2225 individuals, with 25\% of this are designated as both infected and exposed, amounting to 557 individuals each. The infection distance, representing the proximity required for transmission, is established at 1.8 meters, while the probability of an agent becoming exposed is set at 0.50. Each time step within the simulation corresponds to a duration of 10 minutes, allowing for a granular examination of infection dynamics over time. The simulation is projected to persist for a duration of 31680 cycles, equivalent to 220 days, facilitating an extensive exploration of virus transmission patterns and outcomes under the specified conditions. 
+
+\subsubsection{ Scenario 1.3: 50\% Protection Rate}
+\begin{table}[H]
+	\centering
+	{\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exposed\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 0.50\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of Scenario 1.2 with a 50\% Protection Rate}
+		\label{1.3}}
+\end{table}
+
+ 	\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/PR3_G.png}
+	\caption{Snapshot of the GAMA Simulation with a 50\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50,  and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{PR3G}
+\end{figure}
+
+Table \ref{1.2} provides a comprehensive overview of the parameters utilized in the simulation of Scenario 1.3, which aims to examine the impact of a 50\% protection rate on virus transmission dynamics within the school setting. In this scenario, moderate preventive measures are implemented. At the initiation of the simulation, as specified in Table \ref{1.3}, the initial population comprises 2225 individuals, with 25\% designated as both infected and exposed, totaling 557 individuals each. The infection distance, representing the proximity required for transmission, is set at 1.8 meters, while the probability of an agent becoming exposed is established at 0.50. Each time step within the simulation corresponds to a duration of 10 minutes, facilitating a detailed analysis of infection dynamics over time. The simulation is projected to run for a duration of 31680 cycles, equivalent to 220 days, enabling a thorough exploration of virus transmission patterns and outcomes under the specified conditions.
+
+\subsubsection{Scenario 1.4: 75\% Protection Rate}
+\begin{table}[H]
+	\centering
+	{\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exposed\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 0.75\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of Scenario 1.2 with a 75\% Protection Rate}
+		\label{1.4}}
+\end{table}
+
+ 	\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/PR4_G.png}
+	\caption{Snapshot of the GAMA Simulation with a 75\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{PR4G}
+\end{figure}
+
+Table \ref{1.4} presents an extensive breakdown of the parameters employed in the simulation of Scenario 1.5, which investigates the consequences of a 75\% protection rate on virus transmission dynamics within the school environment. In this scenario, high preventive measures are in place. At the outset of the simulation, as outlined in Table \ref{1.4}, the initial population consists of 2225 individuals, with 25\% identified as both infected and exposed, amounting to 557 individuals each. The infection distance, denoting the proximity necessary for transmission, remains at 1.8 meters, while the likelihood of an agent being exposed is fixed at 0.50. Each time interval within the simulation spans 10 minutes, facilitating an intricate examination of infection dynamics over the course of the simulation. The simulation duration is set at 31680 cycles, corresponding to 220 days, allowing for a comprehensive exploration of virus transmission patterns and outcomes under the specified conditions.
+
+\subsubsection{Scenario 1.5: 100\% Protection Rate}
+\begin{table}[H]
+	\centering
+	{\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exposed\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 1.0\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of Scenario 1.2 with a 100\% Protection Rate}
+		\label{1.5}}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/PR5_G.png}
+	\caption{Snapshot of the GAMA Simulation with a 100\% Protection Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{PR5G}
+\end{figure}
+
+Table \ref{1.5} presents an extensive breakdown of the parameters employed in the simulation of Scenario 1.5, which investigates the consequences of a 100\% protection rate on virus transmission dynamics within the school environment. In this scenario, rigorous preventive measures are in place. At the outset of the simulation, as outlined in Table \ref{1.5}, the initial population consists of 2225 individuals, with 25\% identified as both infected and exposed, amounting to 557 individuals each. The infection distance, denoting the proximity necessary for transmission, remains at 1.8 meters, while the likelihood of an agent being exposed is fixed at 0.50. Each time interval within the simulation spans 10 minutes, facilitating an intricate examination of infection dynamics over the course of the simulation. The simulation duration is set at 31680 cycles, corresponding to 220 days, allowing for a comprehensive exploration of virus transmission patterns and outcomes under the specified conditions.
+
+\subsection{ Scenario 2: Varying Initial Exposure Rate}
+In this specific scenario, four distinct sub-scenarios were executed, each characterized by a distinct array of variables and conditions. The simulation entailed varying exposure rates, spanning from 0\% to 75                                                                                                                                       \%. The primary objective of this simulation was to garner precise insights into the influence of exposure rates on the overall scenario outcome. Through the execution of multiple sub-scenarios, the simulation effectively encompassed diverse factors and variables that could potentially impact the outcomes, facilitating a comprehensive analysis of the dynamics at play.
+
+\subsubsection{Scenario 2.1: 0\% Initial Exposure Rate}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.25 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.0\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 2.1 with a 0\% Initial Exposure Rate}
+	\label{2.1a}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/ER1_G.png}
+	\caption{Snapshot of the GAMA Simulation in a 0\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 0, exp\_rate = 0.0, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+\label{ER1G}
+\end{figure}
+
+Table \ref{2.1a} presents a detailed breakdown of the parameters utilized in the simulation of Scenario 2.1, which investigates the consequences of a 0\% initial exposure rate on virus transmission dynamics. This scenario aims to understand the impact of no individuals being initially exposed to the virus. With a protection rate set at 0.50, representing moderate protective measures, the simulation aims to assess their efficacy. At the beginning of the simulation, in line with the specifications outlined in Table \ref{2.1a}, the initial population consists of 2225 individuals, with 25\% of this population identified as infected, totaling 557 individuals. The infection distance, defining the required proximity for transmission, is set at 1.8 meters, while the likelihood of an agent succumbing to exposure is established at 0.50. Each temporal iteration within the simulation corresponds to a duration of 10 minutes, allowing for a detailed examination of infection dynamics over time. The simulation is scheduled to run for 31680 cycles, equivalent to a span of 220 days, enabling a comprehensive investigation of virus transmission patterns and outcomes under specific conditions.
+	\subsubsection{Scenario 2.2 25\% Initial Exposure Rate}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.25 * int\_human\_pop\\
+			init\_expo & exp\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.25\\
+			protection\_rate & 0.50\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of the Scenario 2.2 which has a 25\% Initial Exposure Rate}
+		\label{2.1b}
+	\end{table}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=16cm, height=10cm]{images/ER2_G.png}
+		\caption{Snapshot of the GAMA Simulation in a 25\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+		\label{ER2G}
+	\end{figure}
+
+Table \ref{2.1b} furnishes a comprehensive breakdown of the parameters employed in the simulation of Scenario 2.2, aimed at dissecting the implications of a 25\% exposure rate on virus transmission dynamics. This scenario endeavors to probe the consequences of assuming that a quarter or 557 of the population is initially exposed. With a protection rate set at 0.50, denoting minimal to moderate protection measures, the simulation endeavors to assess the impact of these measures. At the initiation of the simulation, in accordance with the specifications outlined in Table \ref{2.1b}, the initial population comprises 2225 individuals, with 25\% of this populace identified as infected, equating to 557 individuals. The infection distance, showing the proximity required for transmission, is set at 1.8 meters, while the likelihood of an agent succumbing to exposure is established at 0.50. Each iteration within the simulation corresponds to a duration of 10 minutes, facilitating a nuanced exploration of infection dynamics over the time. The simulation is conducted to run for 31680 cycles, translating to a span of 220 days, thereby enabling a thorough investigation of virus transmission patterns and outcomes under specific conditions.
+
+\subsubsection{Scenario 2.3: 50\% Initial Exposure Rate}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.25 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.50\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 2.3 with a 50\% Initial Exposure Rate}
+	\label{2.1c}
+\end{table}
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/ER2_G.png}
+	\caption{Snapshot of the GAMA Simulation in a 25\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 1113, exp\_rate = 0.50, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{ER4G}
+\end{figure}
+
+Table \ref{2.1c} provides an overview of the parameters utilized in the simulation of Scenario 2.3, which investigates the effects of a 50\% initial exposure rate on virus transmission dynamics. This scenario aims to understand the consequences of half of the population or 1113 individuals as initially exposed, representing moderate containment efforts. With a protection rate set at 0.50, indicating moderate protective measures, the simulation aims to assess their effectiveness. At the start of the simulation, as specified in Table \ref{2.1c}, the initial population comprises 2225 individuals, with 25\% identified as infected, totaling 557 individuals. The infection distance, representing the required proximity for transmission, is set at 1.8 meters, while the probability of an agent becoming exposed is established at 0.50. Each iteration within the simulation corresponds to a duration of 10 minutes, facilitating a detailed analysis of infection dynamics over time. The simulation is projected to run for 31680 cycles, equivalent to 220 days, enabling a comprehensive investigation of virus transmission patterns and outcomes under specific conditions.
+
+
+\subsubsection{Scenario 2.4: 75\% Initial Exposure Rate}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.25 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.75\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 2.4 with a 75\% Initial Exposure Rate}
+	\label{2.1d}
+\end{table}
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/ER4_G.png}
+	\caption{Snapshot of the GAMA Simulation in a 75\% Initial Exposure Rate, featuring int\_inf = 557, int\_exp = 1669, exp\_rate = 0.75, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{ER3G}
+\end{figure}
+
+Table \ref{2.1d} outlines the parameters employed in the simulation of Scenario 2.2, focusing on the effects of a 75\% initial exposure rate on virus transmission dynamics. This scenario aims to understand the consequences of three-quarters or 1669 of the population being initially exposed, reflecting moderate containment efforts. With a protection rate set at 0.50, indicating moderate protective measures, the simulation seeks to assess their effectiveness. At the beginning of the simulation, as specified in Table \ref{2.1d}, the initial population comprises 2225 individuals, with 25\% identified as both infected, totaling 557 individuals. The infection distance, representing the required proximity for transmission, is set at 1.8 meters, while the probability of an agent becoming exposed is established at 0.50. Each iteration within the simulation corresponds to a duration of 10 minutes, allowing for a detailed analysis of infection dynamics over time. The simulation is projected to run for 31680 cycles, equivalent to 220 days, enabling a comprehensive investigation of virus transmission patterns and outcomes under specific conditions.
+
+
+
+\subsection{ Scenario 3: Implementation of Lockdown and Quarantine Area}
+In this scenario, we conducted four sub-scenarios, each with distinct conditions, to investigate the effects of implementing Non-Pharmaceutical Interventions (NPIs) on disease transmission dynamics. The simulation varied by implementing Lockdown and Quarantine Areas, aiming to understand how different combinations of these interventions impact the spread of the disease. The scenarios included: No Lockdown and No Quarantine Area, Lockdown Implementation without Quarantine Area, No Lockdown but with Quarantine Area Implementation, and finally, Implementation of both Lockdown and Quarantine Areas. The objective of this simulation was to provide valuable insights into the effectiveness of NPIs in controlling the spread of infectious diseases and inform public health strategies for managing future outbreaks 
+
+	\subsubsection{ Scenario 3.1 No Lockdown and No Quarantine Area}
+	\label{S3.1}
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+			\hline
+			init\_human\_pop & 2225\\
+			init\_inf & 0.10 * int\_human\_pop\\
+			init\_expo & exp\_rate * int\_human\_pop \\
+			agent\_speed & 50.0 cm/s\\
+			infection\_distance & 1.8 meters\\
+			exp\_rate & 0.10\\
+			protection\_rate & 0.50\\
+			proba\_infection & 1.0 - protection\_rate\\
+			proba\_exposed & 0.50\\
+			step & 10 minutes\\
+			exposed\_period & 288 cycles to 1440 cycles\\
+			infectious\_period & 1440 cycles to 2016 cycles\\
+			recovered\_period & 2880 cycles to 8640 cycles\\ 
+			lockdown & false\\
+			\bottomrule
+		\end{tabular}
+		\caption{Variables used for the GAMA Simulation of Scenario 3.1 where there's no implementation of Lockdown and Quarantine Area}
+		\label{3.1}
+	\end{table}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=16cm, height=10cm]{images/NQNLD_G.png}
+		\caption{Snapshot of the GAMA Simulation in a scenario where lockdown and quarantine are are not implemented, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+		\label{ER5G}
+	\end{figure}
+	In this scenario, denoted as Scenario 3.1, the absence of both lockdown measures and a designated quarantine area implies that agents within the simulation have unrestricted mobility throughout the campus during designated intervals such as break times, lunch breaks, and the conclusion of classes. The absence of a quarantine area further worsens the situation, as infected agents remain in close proximity to susceptible individuals without any form of containment. Consequently, the potential for disease transmission is heightened, as infected agents have ample opportunity to come into contact with susceptible individuals during their interactions within the campus environment. This scenario mirrors real-world scenarios where lack of containment measures and unrestricted movement contribute to the rapid spread of infectious diseases within populations. The parameter for this certain scenario is shown in Table \ref{3.1}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=12cm, height=11cm]{images/DNQNLD.png}
+		\caption{Table showing the daily time schedule indicating whether an agent can move or not in a scenario where neither lockdown nor quarantine areas are implemented.}
+		\label{3.1a} 
+	\end{figure}
+
+Figure \ref{3.1a} shows the time schedule for a day, it shows the time when an agent is allowed to go out or not.
+
+\begin{itemize}
+\item \textbf{Start of the Day:} The day begins between 7:00 AM and 7:30 AM, allowing agents to freely move around before class starts. During this time, agents can proceed to their respective classrooms or explore other areas within the simulation.
+
+\item \textbf{Class Time}: Class time is divided into morning and afternoon sessions. The morning session runs from 7:30 AM to 9:30 AM, with a break until 10:30 AM, followed by classes until 12:00 PM. In the afternoon, classes are held from 1:00 PM to 4:00 PM. Agents are restricted to movement within their classrooms during class hours.
+
+\item \textbf{Break Time}: The break period, from 9:30 AM to 10:30 AM, allows agents to move outside their classrooms. During this time, agents may choose to have snacks, buy refreshments, or remain within the classroom.
+
+\item \textbf{Lunch Time} Lunchtime spans from 12:00 PM to 1:00 PM, providing agents with an opportunity to eat lunch either indoors or outdoors. They are permitted to move freely around the campus during this period.
+
+\item \textbf{End of the day} Between 4:00 PM and 6:00 PM marks the end of the day, allowing agents to leave for home. This signals the conclusion of activities for the agents within the simulation.
+\end{itemize}
+
+\subsubsection{ Scenario 3.2 Implementation of Lockdown and No Quarantine Area}
+
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.10 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.10\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		lockdown & true\\
+		quarantine\_area & false\\
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 3.2 where there's an implementation of Lockdown but no Quarantine Area}
+	\label{3.2b}
+\end{table}
+		\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/LDNQ_G.png}
+	\caption{Snapshot of the GAMA Simulation in a scenario where lockdown is implemented but no quarantine area, featuring int\_inf = 556, int\_exp = 556, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{3.2G}
+\end{figure}
+In Scenario \ref{3.2b}, the implementation of a lockdown and the absence of a designated quarantine area imply that agents within the simulation experience restricted mobility throughout the campus during specified intervals such as break times and lunch breaks. The lack of a quarantine area heightens the situation, as infected agents remain in close proximity to susceptible individuals without any form of containment. This scenario reflects real-world situations where containment measures aim to minimize the transmission of respiratory infectious diseases. The parameters used for this simulation is summarized in table \ref{3.2B}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm, height=11cm]{images/DLDNQ.png}
+	\caption{Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there is no lockdown but a quarantine areas are implemented.}
+	\label{3.2a} 
+\end{figure}
+
+Figure \ref{3.2a} shows the time schedule for a day, it shows the time when an agent is allowed to go out or not.
+
+
+\begin{itemize}
+	\item \textbf{Start of the Day:} The day begins between 7:00 AM and 7:30 AM, allowing agents to freely move around before class starts. During this time, agents can proceed to their respective classrooms or explore other areas within the simulation.
+	
+	\item \textbf{Class Time}: Class time is divided into morning and afternoon sessions. The morning session runs from 7:30 AM to 9:30 AM, with a break until 10:30 AM, followed by classes until 12:00 PM. In the afternoon, classes are held from 1:00 PM to 4:00 PM. Agents are restricted to movement within their classrooms during class hours.
+	
+	\item \textbf{Break Time}: The break period, from 9:30 AM to 10:30 AM. Contrary to Scenario 3.1 during break time, the agents are not allowed to go out of their assigned classroom. This means that the students are only allowed to eat their snack inside the classroom.
+	
+	\item \textbf{Lunch Time} Lunchtime spans from 12:00 PM to 1:00 PM. Similar to break time, the students are also not allowed to go outside. They may only eat their lunch inside the classroom. 
+	
+	\item \textbf{End of the day} Between 4:00 PM and 6:00 PM marks the end of the day, allowing agents to leave for home. This signals the conclusion of activities for the agents within the simulation.
+\end{itemize}
+
+\subsubsection{ Scenario 3.3 Implementation of Quarantine Area but No Lockdown}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.10 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.10\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		lockdown & false\\
+		quarantine\_area & true\\
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 3.3 where there's an implementation of Quarantine Area but no Lockdown}
+	\label{3.2B}
+\end{table}
+		\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/QNLD_G.png}
+	\caption{Snapshot of the GAMA Simulation in a scenario where Quarantine Area is implemented but not lockdown, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{3.3G}
+\end{figure}
+In Scenario \ref{3.2B}, the methodology entails the absence of a lockdown measure but includes the integration of a designated quarantine area within the simulation environment. Agents experience limited mobility throughout the campus during designated intervals such as break times and lunch breaks. Despite the absence of a lockdown measure, the presence of a quarantine area facilitates the isolation of infected individuals from susceptible ones. This setup aims to replicate real-world scenarios where containment measures are implemented to minimize the transmission of respiratory infectious diseases. The designated quarantine area serves as a mechanism to isolate infected individuals, allowing for an examination of how containment measures, particularly quarantine, affect disease transmission dynamics within a simulated school setting.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm, height=11cm]{images/DQNLD.png}
+	\caption{Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there's no lockdown but quarantine areas are implemented.}
+	\label{3.2c} 
+\end{figure}
+
+Figure \ref{3.2c} shows the time schedule for a day, it shows the time when an agent is allowed to go out or not.
+
+
+\begin{itemize}
+	\item \textbf{Start of the Day:} The day begins between 7:00 AM and 7:30 AM, allowing agents to freely move around before class starts. During this time, agents can proceed to their respective classrooms or explore other areas within the simulation. 
+	
+	\item \textbf{Class Time}: Class time is divided into morning and afternoon sessions. The morning session runs from 7:30 AM to 9:30 AM, with a break until 10:30 AM, followed by classes until 12:00 PM. In the afternoon, classes are held from 1:00 PM to 4:00 PM. Agents are restricted to movement within their classrooms during class hours. However, if there's an infected students, they would go to the designated quarantine area.
+	
+	\item \textbf{Break Time}: The break period, from 9:30 AM to 10:30 AM, allows agents to move outside their classrooms. During this time, agents may choose to have snacks, buy refreshments, or remain within the classroom. In the event of an infected student, they will be directed to the designated quarantine area.
+	
+	\item \textbf{Lunch Time} Lunchtime spans from 12:00 PM to 1:00 PM, providing agents with an opportunity to eat lunch either indoors or outdoors. They are permitted to move freely around the campus during this period. In the event of an infected student, they will be directed to the designated quarantine area.
+	
+	\item \textbf{End of the day} Between 4:00 PM and 6:00 PM marks the end of the day, allowing agents to leave for home. This signals the conclusion of activities for the agents within the simulation.
+\end{itemize}
+	
+\subsubsection{ Scenario 3.4 Implementation of Lockdown and No Quarantine Area}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Variable/}\textbf{Parameter} & \textbf{Default Value}\\
+		\hline
+		init\_human\_pop & 2225\\
+		init\_inf & 0.10 * int\_human\_pop\\
+		init\_expo & exp\_rate * int\_human\_pop \\
+		agent\_speed & 50.0 cm/s\\
+		infection\_distance & 1.8 meters\\
+		exp\_rate & 0.10\\
+		protection\_rate & 0.50\\
+		proba\_infection & 1.0 - protection\_rate\\
+		proba\_exposed & 0.50\\
+		step & 10 minutes\\
+		exposed\_period & 288 cycles to 1440 cycles\\
+		infectious\_period & 1440 cycles to 2016 cycles\\
+		recovered\_period & 2880 cycles to 8640 cycles\\ 
+		lockdown & true\\
+		quarantine\_area & true\\
+		\bottomrule
+	\end{tabular}
+	\caption{Variables used for the GAMA Simulation of Scenario 3.4 where there's an implementation of Lockdown and Quarantine Area}
+	\label{3.2D}
+\end{table}
+		\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=10cm]{images/QLD_G.png}
+	\caption{Snapshot of the GAMA Simulation in a scenario where Quarantine Area and Lockdown are both implemented, featuring int\_inf = 557, int\_exp = 557, exp\_rate = 0.25, inf\_rate = 0.25, protection\_rate = 0.50, proba\_expo = 0.50, and a simulation duration of 31680 cycles equivalent to 220 days. Rooms highlighted in red indicate the presence of an infected individual rooms highlighted in green indicates that there is no presence of infected person.}
+	\label{3.4G}
+\end{figure}
+In Scenario \ref{3.2D}, the methodology involves the presence of a lockdown alongside the incorporation of a designated quarantine area within the simulation environment. Agents experience restricted mobility throughout the campus during specified intervals such as break times and lunch breaks due to the lockdown measure. However, despite the presence of a lockdown, the designated quarantine area enables the isolation of infected individuals from susceptible ones. This setup aims to mimic real-world scenarios where containment measures, including lockdowns and quarantine areas, are established to minimize the transmission of respiratory infectious diseases. The designated quarantine area serves as a means to isolate infected individuals, contributing to the examination of how containment measures influence disease transmission dynamics within a simulated school setting.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm, height=11cm]{images/DLDQ.png}
+	\caption{Table showing the daily time schedule indicating whether an agent can move or not in a scenario where there's an implementation of Lockdown and Quarantine Area}
+	\label{3.2C} 
+\end{figure}
+
+Figure \ref{3.2C} shows the time schedule for a day, it shows the time when an agent is allowed to go out or not.
+
+
+\begin{itemize}
+	\item \textbf{Start of the Day:} The day begins between 7:00 AM and 7:30 AM, allowing agents to freely move around before class starts. During this time, agents can proceed to their respective classrooms or explore other areas within the simulation. However, if there's an infected students, they would go to the designated quarantine area.
+	
+	\item \textbf{Class Time}: Class time is divided into morning and afternoon sessions. The morning session runs from 7:30 AM to 9:30 AM, with a break until 10:30 AM, followed by classes until 12:00 PM. In the afternoon, classes are held from 1:00 PM to 4:00 PM. Agents are restricted to movement within their classrooms during class hours.
+	
+	\item \textbf{Break Time}: The break period, from 9:30 AM to 10:30 AM. Contrary to Scenario 3.1 during break time, the agents are not allowed to go out of their assigned classroom. This means that the students are only allowed to eat their snack inside the classroom. In the event of an infected student, they will be directed to the designated quarantine area.
+	
+	\item \textbf{Lunch Time} Lunchtime spans from 12:00 PM to 1:00 PM. Similar to break time, the students are also not allowed to go outside. They may only eat their lunch inside the classroom. In the event of an infected student, they will be directed to the designated quarantine area.
+	
+	\item \textbf{End of the day} Between 4:00 PM and 6:00 PM marks the end of the day, allowing agents to leave for home. This signals the conclusion of activities for the agents within the simulation.
+\end{itemize}
+
+\section{Gathering of Data}
+Real population data were gathered from Pines City National High School, revealing a total of 87 teaching personnel, 37 non-teaching personnel, and 2136 students. Thus, in this experiment, the researcher utilized a population of 2225 agents. Among them, 25\% were initially considered infected.
+
+The simulation also spans 31680 cycles, equivalent to a duration of 220 days. These days align with the number of school days prescribed by the Department of Education, ensuring a comprehensive and realistic representation of the educational calendar within the simulation.

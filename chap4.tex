@@ -1,0 +1,883 @@
+\chapter{Results and Discussion}
+\label{chap:Results and Discussion}
+
+\indent \indent Multiple runs were conducted to gather data for addressing the identification problem at hand. Each scenario was carefully designed to test the effects of varying parameters on the transmission dynamics of a respiratory infectious disease within the PCNHS campus.
+
+For robustness, three runs were executed for each sub-scenario, and the average counts of susceptible, exposed, infected, and recovered individuals were calculated from these runs. These averages were then compared across different sub-scenarios to discern the behaviors exhibited by each group of individuals in response to the parameter changes.
+
+The findings and subsequent analysis shed light on the nuanced behaviors of individuals under different implemented scenarios. This helps in understanding how changes in parameters influence the transmission patterns of infectious disease, offering valuable insights for designing effective intervention strategies and mitigating disease spread within the campus setting.
+
+
+\section{ Scenario 1: Varying Protection Rates}
+\label{S1}
+
+\subsection{ Scenario 1.1 SEIR Dynamics in a 0\% Protection Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=4cm]{images/PR_0.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 0\% Protection rate. }
+	\label{fig:10}
+\end{figure}
+
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		
+		\hline
+		\multicolumn{8}{|c|}{\textbf{0\% Protection Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		56.85\% & 1 & 79.77\%  & 3 & 93.1  & 11 & 99.05  &33 \\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 0\%.}
+	\label{PR1_Max}
+\end{table}
+From table \ref{PR1_Max} and Figure \ref{fig:10}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 56.85\%, occurring on Day 1, with approximately 1265 individuals affected.
+	\item The peak percentage of exposed individuals reached 79.77\%, occurring on Day 3, with approximately 1775 individuals affected.
+	\item The peak percentage of infected individuals reached 93.12\%, occurring on Day 11, with approximately 2072 individuals affected.
+	\item The peak percentage of recovered individuals reached 99.05\%, occurring on Day 33, with approximately 2225 individuals affected.
+\end{itemize}
+
+Referring to Figure\ref{fig:10}, the population consisted of a total of 2225 individuals, with 25\% assumed to be infected and an additional 25\% considered exposed. A 0\% protection rate was applied to the simulation, which means that no minimal effort was made to contain the transmission of the virus. The simulation starts on day 1, and the figure shows a gradual increase in the number of infected individuals from days 2 to 10, suggesting that exposed individuals transitioned to the infected state after an incubation period ranging between 2 to 10 days. Notably, the peak infection rate was recorded on day 11, with 2072 individuals infected. Calculating the highest infection rate across the 220-day period yields a value of 93.12\%, derived from the formula:
+
+\[
+\%Inf_{max} = \frac{2072}{2225} \times 100\%  = 93.12\%
+\]
+
+Moreover, a noteworthy observation is the rise in the number of recovered individuals beginning on day 12, indicating the end of the infectious period (typically spanning 10 to 14 days). From no recovered agents from day 12 to reaching its highest number of recovered agents at day 33 with 2225 number of recovered agents. 
+
+Interestingly, a secondary surge in infections occurs after the 20 to 60-day immunity period of those who recovered. This marks the onset of a second wave of infections starting on day 55, which gradually subsides by day 75 as the number of recovered individuals increases. This cyclic pattern repeats, manifesting as a third wave starting from day 108.
+
+This scenario, characterized by a 0\% protection rate, highlights the occurrence of multiple infection waves, each with its peak infection rate of 93.12\%. The analysis underscores the importance of protective measures and immunity in controlling infectious disease outbreaks within populations. 
+
+\subsection{ Scenario 1.2 SEIR Dynamics in a 25\% Protection Rate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=6cm]{images/PR_25.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Protection rate. }
+	\label{fig:11b}
+\end{figure}
+
+\begin{table} [H]
+	\centering
+	{\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{25\% Protection Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		56.85\% & 1 & 79.73\%  & 3 &  80.26  & 11 & 93.88  &39 \\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 25\%.}}
+	\label{PR2_Max}
+\end{table}
+
+In this simulation scenario, a 25\% protection rate was applied to investigate its effect on the number of infected individuals within the population. Similar to Scenario 1.1, the initial conditions on day 1 included 25\%  of the population assumed to be exposed and an additional 25\%  assumed to be infected.
+
+From table \ref{PR2_Max} and Figure \ref{fig:11b}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 56.85\%, occurring on Day 1, with approximately 1265 susceptible agents.
+	\item The peak percentage of exposed individuals reached 79.77\%, occurring on Day 3, with approximately 1775 exposed agents.
+	\item The peak percentage of infected individuals reached 80.26\%, occurring on Day 11, with approximately 1784 individuals affected.
+	\item The peak percentage of recovered individuals reached 93.88\%, occurring on Day 39, with approximately 2089 recovered agents.
+\end{itemize}
+
+The simulation revealed a notable trend where the number of infected individuals began to rise on day 2 following an incubation period of 2 to 10 days, during which exposed individuals either became infected or remained susceptible. The peak of infected cases occurred on day 12, totaling 1784 individuals, resulting in a peak percentage of of 80.2\%, calculated using the formula:
+
+\[ \%Inf_{max}  = \frac{1784}{2225} \times 100\%  = 80.26\% \]
+
+Subsequently, the number of infected individuals gradually declined, reaching a lower point by day 43. Conversely, the count of recovered individuals started to rise from day 12, peaking at day 39 as individuals recovered from the infection.
+
+However, as the number of immune individuals declined over time, a resurgence in infections was observed starting from day 50. This resurgence marked the end of the immunity period ranging from 20 to 60 days, during which previously infected individuals became susceptible once again, initiating a second wave of infections. Similarly, a subsequent third wave occurred following the waning immunity period of individuals who recovered from the second wave.
+
+A third and fourth wave of infection was also observed, although they have a lower crest compared to the first two waves, we can still see a resurgence of infection. 
+
+This detailed analysis underscores the dynamic nature of infectious disease transmission within a population under a 25\% protection rate scenario. 
+
+\subsection{ Scenario 1.3 SEIR Dynamics in a 50\% Protection Rate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=6cm]{images/PR_50.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Protection rate. }
+	\label{fig:12}
+\end{figure}
+
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		
+		\hline
+		\multicolumn{8}{|c|}{\textbf{50\% Protection Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		57.34\% & 1 &80.18\%  & 3 &  62.43  & 19 & 85.97  &44\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 50\%.}
+	\label{PR3_Max}
+\end{table}
+
+
+From table \ref{PR3_Max} and Figure \ref{fig:12}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 57.34\%, occurring on Day 1, with approximately 1276 susceptible agents.
+	\item The peak percentage of exposed individuals reached 80.18\%, occurring on Day 3, with approximately 1784 exposed agents.
+	\item The peak percentage of infected individuals reached 62.43\%, occurring on Day 19, with approximately 1389 individuals affected.
+	\item The peak percentage of recovered individuals reached 85.97\%, occurring on Day 44, with approximately 1913 recovered agents.
+\end{itemize}
+
+This scenario delves into the dynamics of infection within a population under a 50\% protection rate, aiming to understand how this level of protection impacts disease transmission. Similar to the 25\% protection rate scenario and Scenario 1.1, the initial conditions on day 1 included 25\% of the population assumed to be exposed, alongside another 25\% assumed to be infected.
+
+The simulation data from Figure \ref{fig:12} unveils a distinct trend where the number of infected individuals begins to ascend on day 2 post an incubation period lasting 2 to 10 days. This incubation window dictates whether exposed individuals progress to the infected state or remain susceptible. Interestingly, the peak of infected cases is noted on day 19, totaling 1389 individuals, yielding an infection rate of 62.40\%, derived from:
+
+\[ \%Inf_{max} = \frac{1389}{2225} \times 100\%  = 62.40\% \]
+
+Following this peak, at day 19 a gradual decline in the number of infected individuals is observed, reaching a trough by day 49 indicating that the 10 to 14 days of infectious period is over. Concurrently, the count of recovered individuals starts to climb from day 10, peaking at day 46 as individuals recover from the infection.
+
+However, a resurgence in infections is witnessed from day 51 onwards, as the number of immune individuals dwindles over time. This resurgence signifies the conclusion of the immunity period spanning 20 to 60 days, during which previously infected individuals regain susceptibility, initiating a second wave of infections. A subsequent third wave emerges following the waning immunity period of individuals who recovered from the second wave.
+
+This detailed analysis underscores the intricate interplay of immunity dynamics and infection cycles within a population under a 50\% protection rate scenario.
+
+\subsection{Scenario 1.4 SEIR Dynamics in a 75\% Protection Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/PR_75.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 75\% Protection rate. }
+	\label{fig:13S}
+\end{figure}
+
+
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		
+		\hline
+		\multicolumn{8}{|c|}{\textbf{75\% Protection Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		56.67\% & 1 &80.45\%  & 3 &  39.64  & 19 & 65.30  &49\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 75\%.}
+	\label{PR4_Max}
+\end{table}
+
+
+From table \ref{PR3_Max} and Figure \ref{fig:13}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 56.67\%, occurring on Day 1, with approximately 1261 susceptible agents.
+	\item The peak percentage of exposed individuals reached 80.45\%, occurring on Day 3, with approximately 1791 exposed agents.
+	\item The peak percentage of infected individuals reached 39.64\%, occurring on Day 11, with approximately 881 individuals affected.
+	\item The peak percentage of recovered individuals reached 65.30\%, occurring on Day 49, with approximately 1452 recovered agents.
+\end{itemize}
+
+This simulation delves into the intricate dynamics of infection within a population characterized by a robust 75\% protection rate, aiming to unravel the ways in which this high level of protection influences the transmission dynamics of the disease. Analogous to the scenarios featuring a 75\% protection rate and Scenario 1.3, the initial conditions on day 1 encompassed 25\% of the population presumed to be exposed, alongside an additional 25\% presumed to be infected.
+
+Analyzing Figure \ref{fig:13}, we observe that the peak of infection occurs on day 21. The peak percentage for this particular day peaks at 39.64\% meaning that a recorded count of 876 infected individuals, calculated using the formula:
+
+\[ \%Inf_{max}  = \frac{876}{2225} * 100\% = 39.64\% \]
+
+Moreover, starting from day 14, a gradual recovery trend becomes apparent among the population, with the highest number of recovered individuals documented on day 49.
+
+Although there is a slight uptick in infections post-recovery phase, these fluctuations do not qualify as second or third waves of infection. This assertion is grounded in the observation that the infection numbers remain relatively stable and consistently lower than the peak count of infected individuals.
+
+\subsection{ Scenario 1.5 SEIR Dynamics in a 100\% Protection Rate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=8cm]{images/PR_100.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 100\% Protection rate. }
+	\label{fig:14}
+\end{figure}
+
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{100\% Protection Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		99.95\% & 1 &80.45\%  & 3 &  25  & 1 & 18.38  &15\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 100\%.}
+	\label{PR5_Max}
+\end{table}
+
+
+From table \ref{PR5_Max} and Figure \ref{fig:14}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 99.95\%, occurring on Day 75, with approximately 2225 susceptible agents.
+	\item The peak percentage of exposed individuals reached 80.45\%, occurring on Day 3, with approximately 1790 exposed agents.
+	\item The peak percentage of infected individuals reached 25\%, occurring on Day 1, with approximately 557 individuals affected.
+	\item The peak percentage of recovered individuals reached 18.38\%, occurring on Day 15, with approximately 409 recovered agents. 
+\end{itemize}
+In this scenario, the simulation delves into the dynamics of a full or 100\% protection rate, aiming to rigorously examine the impact of complete protection for each individual on the transmission dynamics of a respiratory infectious disease. The simulation is structured to reflect real-world conditions, starting with 25\% of the population as exposed and another 25\% as infected. The simulation spans a duration of 220 days, which aligns with the length of an academic year.
+
+Upon analyzing Figure \ref{fig:14}, it becomes evident that the number of infected individuals remains constant until day 10 and subsequently begins to decrease gradually, signaling the end of the infectious period. This observation is followed by the simultaneous increase in the number of recovered agents as the number of infected agents declines. The number of infected on Day 1 became the highest number of infected which means that the set initial number of agents infected were the only one who became infected all throughout the simulation. The percentage of the highest number of individual was computed by the given equation:
+
+\[ \%Inf_{max}  = \frac{557}{2225} \times 100\%  = 25.0\%\]
+Furthermore, examining the number of exposed agents reveals an interesting trend, with the count of exposed individuals peaking at 1790 individuals at Day 3, yet none of them transition to being infected. This outcome underscores the effectiveness of the full protection rate in preventing infection among exposed individuals.
+
+No multiple waves of infections also occur in this scenario. As the simulation progresses, the number of susceptible agents remains constant starting from Day 71. This stabilization occurs as the count of recovered agents transitions to zero, indicating that all agents have fully recovered and reverted to being susceptible agents once again. This transition highlights the cyclical nature of disease dynamics within a population under the conditions of full protection.
+
+\subsection{ Comparison on the number of Infected Individuals across different varying Protection rates (0\%, 25\%. 50\%. 75\%, 100\%)}
+
+
+\begin{figure}[H]
+	\centering
+	
+	\subfigure[0\%]{\includegraphics[width = 2.9in, height=1.5in]{images/PR0.png}
+		\label{0}}
+	\quad
+	\subfigure[25\%]{\includegraphics[width = 2.9in,height=1.5in]{images/PR25.png}
+		\label{25}}
+	
+	\subfigure[50\%]{\includegraphics[width = 2.9in, height=1.5in]{images/PR50.png}
+		\label{50}}
+	\quad
+	\subfigure[75\%]{\includegraphics[width = 2.9in, height=1.5in]{images/PR75.png}
+		\label{75}}
+	
+	\subfigure[100\%]{\includegraphics[width = 2.9in, height=1.5in]{images/PR100.png}
+		\label{100}}
+		
+		\caption{The Number of Exposed and Infected Individuals across a 220-day period in varying protection rates}
+		\label{Pr5}
+\end{figure}
+In this section, we will conduct a comparative analysis of the varying protection rates illustrated in Figure \ref{Pr5}, depicting the dynamics of exposed and infected individuals over a 220-day period. By comparing each protection rate against the others, our aim is to gain a comprehensive understanding of their respective impacts on respiratory infectious disease transmission.
+
+Let's begin with a comparison between the plots representing 0\% protection, shown in Figure \ref{0}, and 25\% protection, shown in Figure \ref{25}. Here, we observe a slight difference between scenarios with no protection and those with some level of protection. Without any protection, the number of infected individuals can exceed 2000 mark, with a 100\% chance of exposed individuals transitioning to infection after the incubation period. Conversely, a 25\% protection rate noticeably reduces the number of infected individuals, even though the number of exposed individuals remains similar to the scenario with no protection.
+
+Advancing to the 50\% protection rate, depicted in Figure \ref{50}, we notice a narrowing gap between the numbers of exposed and infected individuals. The count of infected individuals is slightly lower compared to the 25\% protection rate and significantly less than the scenario with 0\% protection rate.
+
+Comparing the 50\% protection rate to the 75\% protection rate, illustrated in Figure \ref{75}, we observe a further decrease in the number of infected individuals. Additionally, the number of exposed individuals surpasses that of infected individuals, indicating that some exposed individuals revert to susceptibility after the incubation period, rather than progressing to infection. With a 75\% protection rate, the number of infected individuals is lower than the number of exposed individuals.
+
+Finally, examining the 100\% protection rate, as depicted in Figure \ref{100}, after the incubation period, no exposed individuals transition to infection. The 100\% protection rate yields the lowest number of infected individuals among all protection rates considered.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/PR5.png}
+	\caption{Plot showing the number of infected individuals over time across varying protection rates. }
+	\label{6}
+\end{figure}
+
+The analysis from Figure \ref{6} offers a detailed comparison of the number of infected individuals over time across different protection rates, providing valuable insights into the effectiveness of varying levels of immunity or protection in mitigating disease spread.
+
+Beginning with the scenario of no protection or a 0\% protection rate, we observe the highest number of infections occurring over time. This scenario reflects the vulnerability of the population to the disease without any immunity measures in place. Interestingly, the data indicates that a 25\% protection rate initially yields a similar number of infected individuals as the 0\% protection rate. However, as time progresses, we note that the occurrence of second and third waves of infection is relatively lower compared to the scenario with no protection. No new infection were observed after all the infected individuals recovered.
+
+Moving to a 50\% protection rate, we witness a significant reduction in the number of infected individuals by half compared to the 0\% protection rate scenario. Although a second wave of infection may still occur, its magnitude is notably lower than that observed in the 0\% and 25\% protection rate scenarios.
+
+Increasing the protection rate to 75\% demonstrates even more substantial benefits, leading to a considerable decrease in the number of infected individuals over time. The waves of infection become minimal, with infection rates remaining consistently lower, and only a small proportion (less than 28\% or 623 infected agents) of the population gets infected.
+
+Imposing a 100\% or full protection rate on each individual results in the lowest number of infected individuals over time. In this scenario, only the predefined initially infected individuals show infection, and no new infections are recorded. Among the five levels of protection rates analyzed, a 100\% protection rate emerges as the most effective measure in controlling the number of infected individuals over time.
+
+ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=8cm]{images/PR_IR.png}
+	\caption{Plot showing the number of the highest infection rates across different Protection Rates (0\%, 25\%. 50\%. 75\%, 100\%) }
+	\label{fig:15}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+		\hline
+		\multicolumn{5}{|c|}{\textbf{Infection Rate}} \\
+		\hline
+		0\%& 25\% & 50\% & 75\% & 100\% \\
+		\hline
+		93.1\% & 80.2\% & 62.4\% & 39.6\% & 18.3\%\\
+		\hline
+	\end{tabularx}
+	\caption{Highest Infection Rates across different Protection Rates (0\%, 25\%. 50\%. 75\%, 100\%) where n= 225, int\_expo = 0.25, int\_inf= 0.25, cycle = 31680 cycles }
+	\label{tab:PR_IR}
+\end{table}
+
+Table \ref{tab:PR_IR} and figure \ref{fig:15} provides a comparative analysis of infection rates at varying levels of protection rates within a population. Starting with a 0\% protection rate, which signifies no immunity or protection against the infectious disease, the observed infection rate stands at 93.1\%, this means that at one point in time where almost all of the agent were infected indicating a relatively high rate of disease transmission. As the protection rate increases to 25\%, 50\%, and 75\% corresponding to a quarter, half, and three-quarters of the population being immune or protected, the infection rates decrease to  0.802, 62.4\% and 39.6\%, respectively. These reductions highlight the significant impact of increased protection rates on lowering disease transmission. The differences in infection rate reductions between each protection rate are as follows: from 0\% to 25\% protection, there is a decrease of 13\%; from 25\% to 50\% protection, the decrease is 17.8\%; from 50\% to 75\% protection, the decrease is 0.228. Finally, at a 100\% protection rate, representing full immunity or protection for every individual, the infection rate drops significantly to 18.3\%, underscoring the effectiveness of complete protection in minimizing disease spread within the population. 
+
+
+
+\section{ Scenario 2: Varying Exposure Rates}
+\label{S2}
+In this specific scenario, four sub-scenarios were implemented, each featuring a distinct set of variables and conditions related to exposed rates. The simulation was conducted by varying the levels of exposure rates, ranging from 0\% to 75\%. The objective of this simulation was to gather precise insights into how different exposure rates influence the overall outcome of the scenario. By executing multiple sub-scenarios, the simulation effectively considered various factors and variables that could have impacted the results.
+
+\subsection{ Scenario 2.1 SEIR Dynamics in a 0\% Initial Exposure Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/ER_0.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 0\% Exposed rate. }
+	\label{fig:13}
+\end{figure}
+
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{0\% Exposure Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		75.01& 1 &74.74& 3 &  57.57& 11& 80.53&45\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 0\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 25\%.}
+	\label{ER1_Max}
+\end{table}
+
+
+From table \ref{ER1_Max} and Figure \ref{fig:18}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	\item The peak percentage of susceptible individuals reached 75.01\%, occurring on Day 1, with approximately 1669 susceptible agents.
+	\item The peak percentage of exposed individuals reached 74.74\%, occurring on Day 3, with approximately 1790 exposed agents
+	\item The peak percentage of infected individuals reached 57.57\%, occurring on Day 19, with approximately 1281 individuals affected.
+	\item The peak percentage of recovered individuals reached 80.53\%, occurring on Day 43, with approximately 1792 recovered agents. 
+	
+\end{itemize}
+The simulation commences with a population of 2225 individuals, among whom 25\% are initially assumed to be infected, while 0\% are assumed to be exposed. An observable increase is noted by day 2, indicating the transition of some exposed agents to an infected state. The peak of infected individuals occurred on Day 19, totaling 1281 infected individuals, resulting in an highest infection rate of 57.57\%, calculated as follows:
+\[ \%Inf_{max}= \frac{1276}{2225}\times 100\%  = 57.57\% \]
+
+Subsequently, infected individuals begin to recover between Day 10 and Day 14, signifying the end of their infectious period. As the number of recovered agents increases, the number of infected individuals declines. Recovered individuals started to rise at day 10, signaling the end of the 10 to 14 days of infectious period for infected individuals. The highest peak number of  recovered individuals occurred on Day 43, just 34 days after the peak of infection. The number of recovered individuals started to decline after 20 days of recovery, following the 20 to 60 days of immunity. Interestingly, after the end of immunity, at around day 71, there is a resurgence in the number of infected individuals, indicating the onset of a second wave of infection.
+
+Following the infectious period of the second wave, agents again start to recover, leading to a decline in the number of infected individuals. Although a slight increase in the number of infected individuals is observed later on, it remains relatively lower than during the first and second waves of infection. This observation suggests a tapering off or containment of subsequent waves compared to the initial peaks.
+
+\subsection{ Scenario 2.2 SEIR Dynamics in a 25\% Initial Exposure Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/ER_25.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across initial 25\% Exposure rate. }
+	\label{fig:18}
+\end{figure}
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{25\% Exposure Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		56.18& 1 &79.86& 3 &  61.20& 19& 84.22&43\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 25\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 25\%.}
+	\label{ER2_Max}
+\end{table}
+From table \ref{ER2_Max} and Figure \ref{fig:18}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	
+	\item The peak percentage of susceptible individuals reached 56.18\%, occurring on Day 1, with approximately 1251 susceptible agents.
+	\item The peak percentage of exposed individuals reached 79.86\%, occurring on Day 3, with approximately 1777 exposed agents
+	\item The peak percentage of infected individuals reached 61.20\%, occurring on Day 19, with approximately 1362 individuals affected.
+	\item The peak percentage of recovered individuals reached 84.22\%, occurring on Day 43, with approximately 1874 recovered agents. 
+\end{itemize}
+
+The simulation commences with a population of 2225 individuals, among whom 25\% are initially assumed to be infected, while 25\% are assumed to be exposed. 
+
+The scenario begins with a population of 2225 individuals, with 25\% of them initially assumed to be infected and 25\% assumed to be exposed to the infectious agent. This exposure rate signifies a significant portion of the population at risk of contracting the disease. By day 2 of the simulation, a noticeable increase is observed, indicating the transition of some exposed individuals to an infected state. This transition period highlights the critical phase of disease transmission within the exposed population subset.
+
+From figure \ref{fig:18} The peak of infected individuals is recorded on Day 19, with a total of 105 infected individuals out of the population of 2225. This peak corresponds to an infection rate of 61.20\%, calculated as the ratio of infected individuals to the total population:
+\[ \%Inf_{max} = \frac{1362}{2225} \times 100\%  = 61.20\% \]
+
+It is crucial to note that this infection rate reflects the combined impact of both initial infections and subsequent exposures leading to infections. 
+
+Following the peak, a significant phase of recovery occurs between Day 10 and Day 14, marking the end of the infectious period for many individuals. The increasing number of recovered agents during this period contributes to a decline in the active infections. However, around day 73, a resurgence in the number of infected individuals is observed, indicating the onset of a second wave of infections within the exposed population subset.
+
+As with the initial peak, the infectious period of the second wave gradually subsides, leading to another phase of recovery among the agents. Although there is a slight increase in infections beyond this point, the magnitude remains relatively lower than during the first and second waves.
+
+\subsection{Scenario 2.3 SEIR Dynamics in a 50\% Initial Exposure Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/ER_50.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 50\% Exposed rate. }
+	\label{fig:19}
+\end{figure}
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{50\% Exposure Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{c|}{\textbf{E}}&  \multicolumn{2}{c|}{\textbf{I}}&  \multicolumn{2}{c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		37.49& 1 &84.18& 2&  74.2& 19& 88.81&44\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 50\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 25\%.}
+	\label{ER3_Max}
+\end{table}
+From table \ref{ER3_Max} and Figure \ref{fig:19}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	
+	\item The peak percentage of susceptible individuals reached 37.49\%, occurring on Day 1, with approximately 835 susceptible agents.
+	\item The peak percentage of exposed individuals reached 86.97\%, occurring on Day 3, with approximately 1936 exposed agents
+	\item The peak percentage of infected individuals reached 74.20\%, occurring on Day 19, with approximately 1651 individuals affected.
+	\item The peak percentage of recovered individuals reached 88.40\%, occurring on Day 44, with approximately 1967 recovered agents. 
+\end{itemize}
+
+In the simulation's initial phase, a population of 2225 individuals is considered, with precisely half, or 50\%, assumed to be exposed to the infectious agent and an equivalent percentage initially infected. This exposure rate signifies a substantial risk segment within the population vulnerable to contracting the disease. By the second day of the simulation, a noticeable surge is observed, indicating the transition of a significant number of exposed individuals into the infected state. This rapid transition period underscores the criticality of disease transmission dynamics within the exposed population subset.
+
+Day 19  as seen in figure \ref{fig:19} marks a significant milestone in the simulation, recording the peak of infected individuals at 1651 out of the total population of 2225. This peak corresponds to an infection rate of 74.20\%, calculated as the ratio of infected individuals to the entire population shown by the formula:
+\[ \%Inf_{max} = \frac{1651}{2225} \times 100\%  = 74.20\%\]
+
+This infection rate encapsulates the combined impact of both initial infections and subsequent exposures leading to new infections within the exposed group.
+
+After reaching this peak, a significant recovery period occurs between Day 10 and Day 14, marking the end of the infectious phase for many individuals. The highest recovery was achieved on Day 44. The increasing number of individuals recovering during this period contributes substantially to reducing active infections within the exposed group. However, around Day 71, there is a resurgence in infections, indicating the beginning of a second wave among this exposed subset.
+
+Similar to the initial peak, the infectious phase of this second wave gradually diminishes, leading to another recovery phase among the affected individuals. An increase in the number of infected individual was once again observed on day 151 in infections thereafter, indicating a third wave of infection. As the end of the year approaches, the number of recovered agents once again starts to rise. 
+
+\subsection{ Scenario 2.4 SEIR Dynamics in a 75\% Initial Exposure Rate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=7cm]{images/ER_75.png}
+	\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals over time across 75\% Exposure rate. }
+	\label{fig:20} 
+\end{figure}
+\begin{table} [H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{8}{|c|}{\textbf{75\% Exposure Rate}}\\
+		\hline
+		\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{|c|}{\textbf{E}}&  \multicolumn{2}{|c|}{\textbf{I}}&  \multicolumn{2}{|c|}{\textbf{R}}\\
+		\hline
+		\%& Day & \% & Day & \%  & Day & \% & Day \\
+		\hline
+		18.92& 1 &86.96& 3&  80.28& 19& 93.48&42\\
+		\hline
+	\end{tabular}
+	\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 75\%, \textit{init\_inf} = 25\%,  \textit{protection\_rate} = 25\%.}
+	\label{ER4_Max}
+\end{table}
+From table \ref{ER4_Max} and Figure \ref{fig:20}, we can observe the following maximum percentage number of each state across the 220 day period. It can be seen that 
+
+\begin{itemize}
+	
+	\item The peak percentage of susceptible individuals reached 18.92\%, occurring on Day 1, with approximately 421 susceptible agents.
+	\item The peak percentage of exposed individuals reached 86.96\%, occurring on Day 3, with approximately 1935 exposed agents
+	\item The peak percentage of infected individuals reached 80.28\%, occurring on Day 19, with approximately 1787 individuals affected.
+	\item The peak percentage of recovered individuals reached 93.48\%, occurring on Day 42, with approximately 2080 recovered agents. 
+\end{itemize}
+
+For the scenario with a 75\% Exposure Rate, the simulation begins with a population of 2225 individuals, with 25\% initially infected and 75\% exposed to the infectious agent. This setup reflects a significant portion of the population susceptible to contracting the disease, emphasizing the potential for widespread transmission within the exposed group.
+
+As the simulation progresses, a notable increase in exposed individuals is observed over time, as depicted in Figure \ref{fig:20}. This rise in exposure levels correlates with a subsequent increase in the number of infected individuals, noticeable from Day 2 onwards. The trend suggests a direct relationship between exposure and infection rates within the population.
+
+The peak of infections is reached on Day 19, with a recorded count of 1787 infected individuals out of the total population of 2225. This peak coincides with the highest infection rate observed throughout the 220-day simulation period, calculated at 0.68 using the formula:
+
+\[ \%Inf_{max} = \frac{1787}{2225}\times 100\%  = 80.28\%\]
+
+Additionally, the simulation reveals the occurrence of multiple waves of infections, notably starting on Day 81 and Day 151. These subsequent waves, identified as the 2nd and 3rd waves of infection, though lower in magnitude compared to the initial wave, still lead to approximately 100 infected individuals. This observation underscores the persistence of infectious outbreaks even after initial peaks subside, highlighting the need for sustained vigilance and responsive healthcare strategies to manage recurrent infection waves effectively.
+
+
+\subsection{ Comparison on the number of Infected Individuals across different varying Initial Exposure rates (0\%, 25\%. 50\%. 75\%)}
+\begin{figure}[H]
+	\centering
+	\subfigure[0\%]{\includegraphics[width = 2.9in, height=1.5in]{images/ER0.png}
+		\label{E0}}
+	\quad
+	\subfigure[25\%]{\includegraphics[width = 2.9in,height=1.5in]{images/ER25.png}
+		\label{E25}}
+	
+	\subfigure[50\%]{\includegraphics[width = 2.9in, height=1.5in]{images/ER50.png}
+		\label{E50}}
+	\quad
+	\subfigure[75\%]{\includegraphics[width = 2.9in, height=1.5in]{images/ER75.png}
+		\label{E75}}
+	
+	\caption{Number of Infected Individuals Over a 220-Day Period at varying Initial Exposure Rates of 0\%, 25\%, 50\%, and 75\%}
+	\label{E4}
+\end{figure}
+
+For the four sub-scenarios, the simulation parameters used, included a population size of 2225, a protection rate of 0.50, an initial infection rate of 0.25, and a simulated duration of 31680 cycles. 
+
+Figure \ref{E4} presents separate graphs depicting the number of infected individuals at different initial exposure rates. Let's compare the scenario of 0\% Initial Exposure Rate with 25\% Initial Exposure Rate. Starting with no exposed individuals at the beginning of the simulation yields the fewest infected individuals among all initial exposure rates. Conversely, with a 25\% initial exposure rate, where a quarter of the population is exposed at the simulation's outset, there's a slight increase in the number of infected individuals compared to Figure \ref{E0}.
+
+This trend persists when comparing the graph of the 25\% initial exposure rate with the 50\% initial exposure rate shown in Figure \ref{E50}. Here, we observe a rise in infected individuals, surpassing the 1500 mark in the graph.
+
+Moving on to the scenario of 75\% Initial Exposure Rate, as seen in Figure \ref{E75}, it exhibits the highest infection rate among all initial exposure rates. This indicates that having 75\% of the population exposed also leads to a higher number of infections.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=8cm]{images/ER4.png}
+	\caption{Plot showing the number of infected individuals across different Initial Exposure Rates (0\%, 25\%. 50\%. 75\%) }
+	\label{fig:22}
+\end{figure}
+
+The data from Figure \ref{fig:22} provides a comparative analysis of the number of infected individuals across different exposure rates presented in one graph, offering valuable insights into disease transmission dynamics within the simulated population.
+
+Starting with the 75\% exposure rate, which represents a significant proportion of the population initially exposed, we observe the highest number of infected individuals, peaking at 1787 individuals. This finding underscores the direct correlation between exposure levels and infection rates, highlighting the heightened risk of disease spread when a larger portion of the population is susceptible to the infectious agent.
+
+Moving to the 50\% exposure rate scenario, we note a substantial number of infected individuals, reaching up to 1651 individuals with 136 individuals lower than the 75\% exposure rate. Additionally, the observation of two distinct waves of infection in this scenario emphasizes the dynamic nature of disease transmission, with potential fluctuations in infection rates over time.
+
+The 25\% exposure rate scenario follows, showing a peak of 1362 infected individuals. While 425 and 289 lower than the previous exposure rates, this number still signifies a significant risk of disease transmission within the exposed subset of the population. Notably, multiple waves of infection are observed here as well, indicating recurrent periods of heightened transmission within this exposure group.
+
+Finally, at the 0\% exposure rate, where there is no initial exposure, we observe the least number of infected individuals, totaling 1281 individuals. This observation aligns with the expected trend that lower exposure levels correspond to reduced infection rates, highlighting the importance of preventive measures and containment strategies in limiting disease spread. This scenario gives the lowest number of infected individuals which means that having a lower exposure rate will result to lower number of infected individuals.
+
+Overall, the data underscores the critical role of exposure rates in influencing infection dynamics, with higher exposure rates correlating with increased infection rates and the potential for multiple waves of infection.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=8cm]{images/ER_IR.png}
+	\caption{Plot showing the number of the highest infection rates across different Exposure Rates (0\%, 25\%. 50\%. 75\%) }
+	\label{fig:21}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+		\hline
+		\multicolumn{4}{|c|}{\textbf{Infection Rate}} \\
+		\hline
+		0\%& 25\% & 50\% & 75\% \\
+		\hline
+		57.57\%& 61.20\% & 74.20\%  & 80.20\%\\
+		\hline
+	\end{tabularx}
+	\caption{Highest Percentage of Infection across different Exposure Rates (0\%, 25\%. 50\%. 75\%,) where N= 2225, protection\_rate = 0.50, int\_inf= 0.25, cycle = 31680 cycles }
+	\label{tab:ER_IR}
+\end{table}     
+
+The data table present in Table \ref{tab:ER_IR} provides a comprehensive view of the highest infection rates observed across varying exposure rates within a simulated population, shedding light on the intricate dynamics of disease transmission. Examining the four exposure rates - 0\%, 25\%, 50\%, and 75\%, we gain valuable insights into how different levels of initial exposure impact the spread of infectious diseases.
+
+At a 0\% exposure rate, where no initial exposure occurs, the  highest percentage of infection is measured at 57.57\%. This indicates that almost half of the population that time was infected. It also indicates a baseline level of disease transmission within the population, likely influenced by factors such as interactions among individuals and environmental conditions.
+
+As we move to a 25\% exposure rate, reflecting a quarter of the population initially exposed, we observe a slight increase in the highest percentage of infection to 61.20\%. This uptick signifies a higher level of disease spread compared to the no-exposure scenario, highlighting the vulnerability of exposed individuals to infection and potential transmission to others.
+
+The most notable escalation in infection rates is observed at a 50\% exposure rate, where half of the population is initially exposed. Here, the highest percentage of infection noted spikes to 74.20\%, showcasing a significant impact of increased exposure levels on disease transmission dynamics.
+
+Surprisingly, after having three-quarters of the population being initially exposed at a 75\% exposure rate, the highest percentage of infection notably increases to 80.2\%. This substantial rise emphasizes the heightened risk of disease spread in environments with extensive exposure, where a larger proportion of individuals are susceptible to infection.
+
+
+
+\section{Scenario 3: Implementation of Lockdown and Quarantine Area}
+\label{S3}
+In this scenario, we conducted four sub-scenarios, each with distinct conditions, to investigate the effects of implementing Non-Pharmaceutical Interventions (NPIs) on disease transmission dynamics. The simulation varied by implementing Lockdown and Quarantine Areas, aiming to understand how different combinations of these interventions impact the spread of the disease. The scenarios included: No Lockdown and No Quarantine Area, Lockdown Implementation without Quarantine Area, No Lockdown but with Quarantine Area Implementation, and finally, Implementation of both Lockdown and Quarantine Areas. The objective of this simulation was to provide valuable insights into the effectiveness of NPIs in controlling the spread of infectious diseases and inform public health strategies for managing future outbreaks 
+
+\subsection{ Scenario 3.1 No Lockdown and No Quarantine Area}
+\label{3.1b}
+
+In this particular scenario, No Lockdown and No Quarantine Area were implemented. It involved a population of 2225 individuals, with 10\% of the population assumed to be infected and an equal proportion exposed. Additionally, there was a 50\% protection rate in place. In this setup, individuals could freely roam the hallways and environment during their breaks, which occurred at 10-10:30 AM, 12:00 NN Lunch, and the end of class at 5 PM.
+
+\begin{figure}[H]
+	\centering
+	\subfigure[Snapshot of the simulation during break time]
+	{\includegraphics[width=2.4in]{images/3.1a.png}
+		%\caption{Snapshot of the simulation during break time}}
+	\label{break}}
+\quad
+\subfigure[Snapshot of the simulation during lunch time]
+{\includegraphics[width=2.4in]{images/3.1b.png}
+	%\caption{Snapshot of the simulation during lunch time}
+	\label{lunchtime}}
+
+\caption{Snapshot of the simulation when No Lockdown and No Quarantine Area was implemented.}
+\label{fig:figures}
+\end{figure}
+
+Figure \ref{break} depicts the simulation scenario during the designated break time, while Figure \ref{lunchtime} illustrates the situation during lunchtime. These visual representations highlight a crucial aspect of the simulation: the unrestricted movement of agents during these periods. As observed, agents are allowed to freely roam around, which significantly heightens the risk of transmitting the infectious disease. This unrestricted mobility increases the likelihood of close contact between individuals, facilitating the spread of the disease within the simulated environment.
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm, height=7cm]{images/NQNLD.png}
+\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals in No Lockdown and No Quarantine Area scenario. }
+\label{LD1} 
+\end{figure}
+\begin{table} [H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\hline
+	\multicolumn{8}{|c|}{\textbf{No Lockdown and No Quarantine Area}}\\
+	\hline
+	\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{|c|}{\textbf{E}}&  \multicolumn{2}{|c|}{\textbf{I}}&  \multicolumn{2}{|c|}{\textbf{R}}\\
+	\hline
+	\%& Day & \% & Day & \%  & Day & \% & Day \\
+	\hline
+	81.26& 1 &57.61& 11&  55.01& 24& 75.95&52\\
+	\hline
+\end{tabular}
+\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 10\%, \textit{init\_inf} = 10\%,  \textit{protection\_rate} = 50\%.}
+\label{LD1_Max}
+\end{table}
+From table \ref{LD1_Max} and Figure \ref{LD1}, we can observe the following maximum percentage number of each state across the 220-day period. It can be seen that 
+
+\begin{itemize}
+
+\item The peak percentage of susceptible individuals reached 81.26\%, occurring on Day 1, with approximately 1809 susceptible agents.
+\item The peak percentage of exposed individuals reached 57.61\%, occurring on Day 11, with approximately 1282 exposed agents
+\item The peak percentage of infected individuals reached 55.01\%, occurring on Day 24, with approximately 1224 individuals affected.
+\item The peak percentage of recovered individuals reached 75.95\%, occurring on Day 52, with approximately 1690 recovered agents. 
+\end{itemize}
+
+The simulation commences on Day 1, with only 10\% of the population initially infected. Over time, the number of exposed individuals gradually increases, reaching a significant rise by Day 2, marking the end of the incubation period. Concurrently, the number of infected individuals begins to rise, reaching its peak infection percentage across the 220-day period on Day 24, with 1224 infected individuals. Following the infectious period, which typically lasts 10 to 14 days, the number of recovered individuals starts to climb, beginning on Day 11. The highest percentage of the population that recovers is recorded on Day 52, with 1690 individuals having recovered after being infected by the disease. This calculation is determined by the formula:
+
+\[ \%Inf_{max} = \frac{1224}{2225} \times 100\% = 55.01\%\]
+
+Notably, after the immunity period of the recovered agents ends, another wave of infection is observed on Day 71. Although lower than the first wave of infection, it still surpasses the 500 individuals mark in the graph. Once again, following the infectious period, the number of recovered individuals starts to rise, indicating the end of the infectious period for the agents in the second wave. These multiple waves of infection maybe caused by the interaction of the students during the time where they can roam around the campus. This sped up the transmission of the virus increasing the chance of passing and being infected by the virus. 
+
+\subsection{ Scenario 3.2 Implementation of Lockdown and No Quarantine Area}
+\label{3.2}
+Depicted in  Figure\ref{class} is the situation during lunch, it can be seen that the students are inside the class. Unlike Scenario 3.1, the students are not allowed to go out the classroom and roam around the hallways. They are only allowed to go out during the end of the class which is shown in Figure \ref{end} where the students can be seen moving through the road network. This represents the students going home. 
+
+\begin{figure}[H]
+\centering
+\subfigure[Snapshot of the simulation during lunch time when lockdown is implemented]{\includegraphics[width = 2.8in, height=2.5in]{images/3.2a.png} 
+\label{class}}
+\quad
+\subfigure[Snapshot of the simulation during end of class]{\includegraphics[width = 2.8in, height=2.5in]{images/3.2b.png} 
+	\label{end}}
+	\caption{Snapshot of the simulation during lunch time and end of class when lockdown is implemented}
+	\end{figure}
+	
+	\begin{figure}[H]
+\centering
+\includegraphics[width=16cm, height=7cm]{images/LDNQ.png}
+\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Lockdown and No Quarantine Area scenario. }
+\label{LD2} 
+\end{figure}
+\begin{table} [H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\hline
+	\multicolumn{8}{|c|}{\textbf{Lockdown and No Quarantine Area}}\\
+	\hline
+	\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{|c|}{\textbf{E}}&  \multicolumn{2}{|c|}{\textbf{I}}&  \multicolumn{2}{|c|}{\textbf{R}}\\
+	\hline
+	\%& Day & \% & Day & \%  & Day & \% & Day \\
+	\hline
+	80.98& 1 &40.04& 12&  28.53& 24& 48.63&56\\
+	\hline
+\end{tabular}
+\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 10\%, \textit{init\_inf} = 10\%,  \textit{protection\_rate} = 50\%.}
+\label{LD2_Max}
+\end{table}
+From table \ref{LD2_Max} and Figure \ref{LD2}, we can observe the following maximum percentage number of each state across the 220-day period. It can be seen that 
+
+\begin{itemize}
+
+\item The peak percentage of susceptible individuals reached 80.98\%, occurring on Day 1, with approximately 1802 susceptible agents.
+\item The peak percentage of exposed individuals reached 40.4\%, occurring on Day 12, with approximately 891 exposed agents
+\item The peak percentage of infected individuals reached 28.53\%, occurring on Day 24, with approximately 635 individuals affected.
+\item The peak percentage of recovered individuals reached 48.63\%, occurring on Day 56, with approximately 1083 recovered agents. 
+\end{itemize}
+
+For this certain scenario, The simulation begins on Day 1, with an initial infection rate of only 10\% of the population. As time progresses, the number of exposed individuals steadily grows, experiencing a notable surge by Day 2, signifying the conclusion of the incubation period of 2-14 days. Meanwhile, the count of infected individuals starts to escalate, culminating in its highest percentage of infection over the 220-day period on Day 24, with 635 individuals affected showed by the equation:
+
+\[ \%Inf_{max} = \frac{635}{2225} \times 100\%  = 40.04\%\]
+
+The analysis reveals a noteworthy trend in the simulation: the emergence of a substantial increase in recovered agents after Day 10, signifying the conclusion of the 10 to 14-day infectious period. Notably, this trend reaches its pinnacle on Day 56, with 40.04\% of the population at that time having recovered from the infection.
+
+Furthermore, the absence of additional waves in the graph can be also observed. The data indicates that the number of infected individuals remains relatively stable and fails to surpass the 1000-mark threshold throughout the observed period. This observation may be attributed to the implementation of a lockdown measure, which appears to have played a significant role in containing the spread of the virus.
+
+The effectiveness of the lockdown measure lies in its ability to restrict the movement of individuals and limit social interactions, thereby reducing the likelihood of virus transmission. By confining individuals to limited spaces and minimizing opportunities for contact with others, the lockdown measure effectively curtails the spread of the virus within the simulated environment.
+
+\subsection{ Scenario 3.3 Implementation of having a Quarantine Area and No Lockdown}
+\label{3.3}
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm, height=7cm]{images/QJNLD.png}
+\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Quarantine Area and No Lockdown scenario. }
+\label{LD3} 
+\end{figure}
+\begin{table} [H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\hline
+	\multicolumn{8}{|c|}{\textbf{Lockdown and No Quarantine Area}}\\
+	\hline
+	\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{|c|}{\textbf{E}}&  \multicolumn{2}{|c|}{\textbf{I}}&  \multicolumn{2}{|c|}{\textbf{R}}\\
+	\hline
+	\%& Day & \% & Day & \%  & Day & \% & Day \\
+	\hline
+	81.25& 1 &36.54& 245&  30.16& 35& 59.73&61\\
+	\hline
+\end{tabular}
+\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 10\%, \textit{init\_inf} = 10\%,  \textit{protection\_rate} = 50\%.}
+\label{LD3_Max}
+\end{table}
+From table \ref{LD3_Max} and Figure \ref{LD3}, we can observe the following maximum percentage number of each state across the 220-day period. It can be seen that 
+
+\begin{itemize}
+
+\item The peak percentage of susceptible individuals reached 81.25\%, occurring on Day 1, with approximately 1808 susceptible agents.
+\item The peak percentage of exposed individuals reached 36.54\%, occurring on Day 24, with approximately 814 exposed agents
+\item The peak percentage of infected individuals reached 30.16\%, occurring on Day 36, with approximately 672 individuals affected.
+\item The peak percentage of recovered individuals reached 59.73\%, occurring on Day 62, with approximately 1329 recovered agents. 
+\end{itemize}
+
+From Figure \ref{LD3}, the simulation begins on Day 1, with 10\% of the population, or 225 individuals, already infected. This initial number rapidly escalates, reaching its peak infection rate on Day 36, with 672 individuals affected. This peak infection rate is also the highest percentage recorded throughout the 220-day period, calculated as 30.16% using the formula:
+
+\[ \%Inf_{max} = \frac{672}{2225} \times 100\% = 30.16\% \].
+
+Following the conclusion of the infectious period on Day 10, the number of recovered agents starts to rise steadily, reaching its peak on Day 62 with 1329 recovered individuals. However, despite the peak in recoveries, the number of infected individuals remains relatively stable from Day 121 to Day 220.
+\begin{figure}[H]
+\centering
+\subfigure[Quarantine Are for infected individuals.]{\includegraphics[width = 2.8in, height=2.5in]{images/qua.png} }
+\label{quarantine}
+\quad
+\subfigure[Snapshot of susceptible agents' interaction with other infected individuals whn lockdown is absent]{\includegraphics[width = 2.8in, height=2.5in]{images/3.3b.png} }
+\label{interaction}
+\caption{Snapshot of the simulation during lunch time and end of class when lockdown is implemented}
+\end{figure}
+
+Additionally, the graph indicates that the number of infected individuals remains constant and barely exceeds the 500-mark threshold. This phenomenon may be attributed to the implementation of a quarantine area for infected individuals which can be seen , which effectively isolates them from the rest of the population. The sustained infection rate may also be influenced by the absence of a lockdown measure, allowing infected agents to continue interacting with susceptible individuals.
+
+While the number of infections is lower compared to scenarios without a quarantine area, the presence of such a containment measure proves beneficial in limiting the transmission of the infectious disease within the simulated environment.
+
+\subsection{ Scenario 3.4 Implementation of Lockdown and Quarantine Area}
+\label{3.4}
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm, height=7cm]{images/QLD.png}
+\caption{Plot showing the number of susceptible, exposed, infected, and recovered individuals in implementing a Lockdown and Quarantine Area scenario. }
+\label{LD4} 
+\end{figure}
+\begin{table} [H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\hline
+	\multicolumn{8}{|c|}{\textbf{Lockdown and No Quarantine Area}}\\
+	\hline
+	\multicolumn{2}{|c|}{\textbf{S}} &  \multicolumn{2}{|c|}{\textbf{E}}&  \multicolumn{2}{|c|}{\textbf{I}}&  \multicolumn{2}{|c|}{\textbf{R}}\\
+	\hline
+	\%& Day & \% & Day & \%  & Day & \% & Day \\
+	\hline
+	80.62& 1 &33.17& 14&  28.67& 30& 51.60&58\\
+	\hline
+\end{tabular}
+\caption{Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit{basenum\_human} = 2225 individuals, \textit{time\_cycle} = 31680 cycles, \textit{init\_expo} = 10\%, \textit{init\_inf} = 10\%,  \textit{protection\_rate} = 50\%.}
+\label{LD4_Max}
+\end{table}
+From table \ref{LD4_Max} and Figure \ref{LD4}, we can observe the following maximum percentage number of each state across the 220-day period. It can be seen that 
+
+\begin{itemize}
+
+\item The peak percentage of susceptible individuals reached 80.62\%, occurring on Day 1, with approximately 1794 susceptible agents.
+\item The peak percentage of exposed individuals reached 33.17\%, occurring on Day 14, with approximately 738 exposed agents
+\item The peak percentage of infected individuals reached 28.67\%, occurring on Day 30, with approximately 638 individuals affected.
+\item The peak percentage of recovered individuals reached 51.60\%, occurring on Day 58, with approximately 1148 recovered agents. 
+\end{itemize}
+
+In this scenario, the simulation begins with 10\% of the population already infected, while another 10\% are exposed individuals. As the simulation progresses, the number of exposed individuals steadily rises, reflecting the 2 to 10-day incubation period. Subsequently, as the incubation period concludes, the number of infected individuals begins to increase, culminating in a peak infection rate on Day 30, where 28.67\% of the population, or 638 individuals, are considered infected. This infection rate is calculated using the equation:
+
+\[ \%Inf_{max} = \frac{638}{2225} \times 100\%  = 28.67\%\]
+
+Following this peak, the number of infected individuals gradually declines as their infectious period ends. Concurrently, the number of recovered agents starts to rise, eventually reaching a peak where 51.60\% of the population are recovered.
+
+The observed peak in infections followed by a decline suggests that the infectious period plays a significant role in shaping the dynamics of disease transmission. Additionally, the subsequent rise in recovered individuals underscores the importance of recovery in mitigating the spread of the disease within the population. However, the sustained number of exposed and infected individuals until the end of the simulation indicates ongoing transmission and highlights the need for continued monitoring and intervention to control the outbreak effectively.
+\subsection{ Comparison on the number of Infected Individuals across different varying Implementation of Lockdown and Quarantine Area}
+
+\begin{figure}[H]
+	\centering
+	\subfigure[No Quarantine and No Lockdown]{\includegraphics[width = 2.9in, height=1.5in]{images/NQNLD3.png}
+		\label{a}}
+	\quad
+	\subfigure[Lockdown and No Quarantine]{\includegraphics[width = 2.9in,height=1.5in]{images/LNQ2.png}
+		\label{b}}
+	\subfigure[Quarantine and No Lockdown]{\includegraphics[width = 2.9in, height=1.5in]{images/QNLD1.png}
+		\label{c}}
+	\quad
+	\subfigure[Quarantine and Lockdown]{\includegraphics[width = 2.9in, height=1.5in]{images/QLD0.png}
+		\label{d}}
+	
+	\caption{Number of Infected Individuals across different varying Implementation of Lockdown and Quarantine Area}
+	\label{QLD}
+\end{figure}
+
+
+In each of the four sub-scenarios, the simulation utilized specific parameters: a population size of 2225, a protection rate set at 0.50, an initial infection rate of 0.10, and a simulated duration lasting 31680 cycles.
+
+Figure \ref{QLD} illustrates the number of infected individuals under varying scenarios of implementing lockdown and establishing quarantine areas. We observe that the scenario with No Lockdown and No Quarantine Area, represented by Figure \ref{a}, yields the highest number of infections compared to the other three scenarios.
+
+Upon examining the trends in the graphs represented by Figures \ref{b}, \ref{c}, and \ref{d}, it becomes evident that the number of infected individuals is notably lower and follows a similar pattern compared to the scenario with No Quarantine and No Lockdown.
+
+Among the four graphs, the scenario resulting in the fewest infections is the one where both Lockdown and Quarantine Areas are implemented. This suggests that combining these measures leads to the most effective containment of the spread of infection.
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm, height=8cm]{images/LDQ_4.png}
+	\caption{Plot showing the number of susceptible, exposed, infected and recovered individual over time across the four scenarios involving Lockdown and Quarantine Area }
+	\label{LDQ}
+\end{figure} 
+
+In Figure \ref{LDQ}, we observe significant disparities in the number of infected individuals across the 220-day simulation period among different scenarios. Notably, Scenario 3.1, characterized by the absence of both Quarantine Area and Lockdown measures, exhibits the highest number of infections over time compared to other scenarios. It peaks on Day 24 with 1224 infected individuals, surpassing the 1000-mark in the graph. 
+
+Moving forward, the remaining three scenarios demonstrate similar trends, albeit with slight variations. Among these, Scenario 3.3 stands out as the second-highest in terms of infected individuals. Despite the minor discrepancies compared to Scenarios 3.2 and 3.4, its initial surge of infections occurs later, around Day 35, in contrast to Days 24 and 28 for Scenarios 3.1 and 3.4, respectively. This delay can be attributed to the presence of a quarantine area, which effectively contains the spread of the virus. However, the absence of a lockdown allows infected agents to continue interacting with others, prolonging the spread.
+
+Interestingly, Scenarios 3.2 and 3.4 exhibit strikingly similar trends in the graph, consistently maintaining the lowest number of infections throughout the 220-day period. This suggests that the implementation of a lockdown significantly contributes to containing the virus by restricting agent movement and interactions, thereby reducing the probability of infection. 
+
+Overall, these observations underscore the critical role of non-pharmaceutical interventions, such as quarantine measures and lockdowns, in mitigating the spread of infectious diseases within simulated populations. The results highlight the importance of implementing comprehensive strategies to effectively control outbreaks and safeguard public health.
+
+This means that having no quarantine area to contain the infected individual and no Lockdown which allows the individual to roam around freely can increase the transmission of the virus. 
+
+The provided data table offers an extensive overview of the number of infected individuals observed across different scenarios which contains the implementation of Lockdown and Quarantine Area. 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+	\hline
+	\multicolumn{4}{|c|}{\textbf{Infection Rate}} \\
+	\hline
+	Scenario 3.1& Scenario 3.2 & Scenario 3.3& Scenario 3.4 \\
+	\hline
+	55.01\% & 28.54\% & 30.16\% & 28.67\%\\
+	\hline
+\end{tabularx}
+
+\caption{Highest Infection Rates across different scenarios involving Lockdown and having Quarantine Area where N= 2225, int\_expo = 0.10, int\_inf= 0.10, cycle = 31680 cycles }
+\label{tab:LD_IR}
+
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm, height=8cm]{images/LDQ_IR.png}
+\caption{Plot showing the number of the highest infection rates across different scenarios involving the sneraios wiht Lockdown and Quarantine Area }
+\label{LDQ_IR}
+\end{figure}
+
+The data from Table \ref{tab:LD_IR} and Figure \ref{LDQ_IR}provides a comparative analysis of the infection rates across different scenarios, shedding light on the dynamics of disease transmission within the simulated population.
+
+Starting with Scenario 3.1, which represents the absence of both Quarantine Area and Lockdown measures, we observe the highest infection rate at 55.01\%. This scenario reflects a scenario where no preventive measures are in place, resulting in a substantial proportion of the population becoming infected. Compared to Scenario 3.2, the infection rate in this scenario is 26.47\% higher, indicating the significant impact of implementing lockdown measures in limiting transmission.
+
+Transitioning to Scenario 3.2, where Lockdown measures are implemented but without Quarantine Area, we note a lower infection rate of 28.54\%. This signifies a significant reduction in the spread of the disease compared to Scenario 3.1, highlighting the effectiveness of lockdown measures in limiting transmission. Compared to Scenario 3.3, the infection rate in this scenario is 1.38\% lower, underscoring the importance of implementing comprehensive preventive measures to mitigate disease spread.
+
+In Scenario 3.3, characterized by the presence of Quarantine Area but without Lockdown measures, we observe a slight increase in the infection rate to 30.16\%. Despite the containment efforts provided by the quarantine area, the absence of lockdown allows for continued interaction among individuals, contributing to a higher infection rate compared to Scenario 3.2. Compared to Scenario 3.4, the infection rate in this scenario is 1.49\% lower, suggesting that while quarantine measures can contain the spread to some extent, the absence of lockdown measures may limit their effectiveness.
+
+Finally, in Scenario 3.4, where both Lockdown and Quarantine Area are implemented, we see a further decrease in the infection rate to 28.67\%. This scenario represents the most stringent preventive measures, resulting in the lowest infection rate among the four scenarios. The findings underscore the critical importance of implementing comprehensive strategies, including both lockdown and quarantine measures, to effectively control outbreaks and safeguard public health.
+
+

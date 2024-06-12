@@ -1,0 +1,80 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: UPBMain.aux
+Reallocating 'name_of_file' (item size: 1) to 19 items.
+A level-1 auxiliary file: publicannounce.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: intro.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: chap2.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+A level-1 auxiliary file: prelims.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: chap3.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: chap4.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: chap5.aux
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+The style file: siam.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Database file #1: bibliog.bib
+Warning--entry type for "unknown" isn't style-file defined
+--line 239 of file bibliog.bib
+Repeated entry---line 488 of file bibliog.bib
+ : @misc{g_2023_facility
+ :                      ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in a2011_infectious
+Warning--to sort, need author or key in a2020_covid19
+Warning--to sort, need author or key in a2020_what
+Warning--to sort, need author or key in agentbased
+Warning--to sort, need author or key in explanation
+Warning--to sort, need author or key in unknown-author-no-date
+Warning--to sort, need author or key in SIR
+Warning--to sort, need author or key in a1
+Warning--to sort, need author or key in runge
+Warning--empty publisher in alexandre_2021_predictive
+Warning--empty journal in alvin_2020_modeling
+You've used 52 entries,
+            2030 wiz_defined-function locations,
+            740 strings with 12205 characters,
+and the built_in function-call counts, 14408 in all, are:
+= -- 1213
+> -- 759
+< -- 0
++ -- 313
+- -- 256
+* -- 1117
+:= -- 2251
+add.period$ -- 52
+call.type$ -- 52
+change.case$ -- 283
+chr.to.int$ -- 0
+cite$ -- 63
+duplicate$ -- 621
+empty$ -- 1154
+format.name$ -- 256
+if$ -- 2990
+int.to.chr$ -- 0
+int.to.str$ -- 52
+missing$ -- 27
+newline$ -- 159
+num.names$ -- 84
+pop$ -- 376
+preamble$ -- 1
+purify$ -- 233
+quote$ -- 0
+skip$ -- 551
+stack$ -- 0
+substring$ -- 583
+swap$ -- 203
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 204
+warning$ -- 11
+while$ -- 108
+width$ -- 54
+write$ -- 382
+(There was 1 error message)

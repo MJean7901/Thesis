@@ -1,0 +1,140 @@
+\documentclass[12pt]{report}
+\usepackage{epsfig}
+\usepackage{UPBcomsci}  
+\usepackage{UPBnotations}
+\usepackage{ tabularx}
+\usepackage{comment}
+\usepackage{amssymb, graphicx, amsmath}
+\usepackage{subfigure} 
+\usepackage{subcaption} 
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{moreverb}
+\usepackage{cite}
+\usepackage{tabularray}
+\usepackage{booktabs}
+\usepackage{float,framed,bm}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{rotating}
+
+\begin{document}
+
+\title{Assessing Respiratory Infectious Disease Transmission in Public School Settings: An Agent-Based Modeling Approach at Pines City National High School}
+
+\authorfirst{Myla Jean C.}
+\authorlast{Legaspi}
+%\authorext{Jr.} \authorexttrue %make this a comment if you do not have an extension name e.g. Jr., II, III, etc.
+
+\degree{Bachelor of Science in Computer Science} %enter the specific degree
+\thesistype{Special Problem} %enter whether Master's Thesis or Doctoral Dissertation for this is Special Problem
+\thesisdocument{Special Problem} %enter whether Thesis or Dissertation or Special Problem
+
+%\specialization{Computer Science} \specializetrue %make this a comment if you are Ph.D. or BS student or no specialization
+
+\defensedate{May 21, } %indicate the month, day and year the research was defended
+\submitmonth{May} %indicate the month the manuscript was submitted to the office
+\submityear{2024} %indicate the year the manuscript was submitted to the CS office
+
+%% Change to name of Adviser
+\adviser{Joel  M. Addawe, Ph.D.}%main adviser
+%\reader{Joel  M. Addawe, Ph.D.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% highlight \bothabsenttrue if the student has only one adviser and one reader
+%% otherwise comment \bothabsenttrue and highlight \coadviser or \coreader which 
+%% ever is applicable. In this case, the package assumes either you have 1 Adviser 
+%% and 2 Readers, or 2 Advisers and 1 Reader. 
+  
+\bothabsenttrue
+
+%\coadviser{co-Adviser} 
+%\coadvisetrue  
+% Make the \coadvisetrue as a comment if there is no adviser
+
+%\coreader{Co-Reader's Name}  %leave this blank if there is a coadviser
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chairman{Gilbert R. Peralta, Ph.D.} 
+%\dean{Rosemary M. Guttierez, Ph.D.}
+
+\acknowledge{\hspace{6 mm} }
+
+\abs{In the Philippine educational landscape, congestion and overpopulation in classrooms present a significant challenge in curbing the transmission of respiratory infectious diseases. The close proximity of students and staff, stemming from limited space and high student-to-classroom ratios, escalates the risk of disease dissemination within school premises. This paper employs Agent-Based Modeling to develop a framework for understanding the dynamics of respiratory infectious disease transmission within school environments, particularly focusing on Pines City National High School. It identifies the effects of various key factors influencing disease spread, including protection rates, initial exposure rates, and the implementation of non-pharmaceutical interventions such as lockdowns and quarantine areas. The simulation employs QGIS and Autocad to create the structure of the shapefile or simulation area, and the GAMA Platform for the actual simulation. In scenarios where there’s a varying protection rate, it shows that starting with 0\% protection, the infection rate is 93.1\%, but it decreases to 25\% with 100\% protection. Each 25\% increase in protection results in approximately a 20\% decrease in infection rate. The study underscores the significance of comprehensive immunity measures, with higher protection rates associated with fewer infections. In addition, the impact of initial exposure rates on respiratory infectious disease transmission shows that infection rates rise steeply with increased initial exposure rates: 61.20\% at 25\% exposure (+3.63\%), 74.20\% at 50\% exposure (+16.63\%), and peak at 80.20\% at 75\% exposure (+22.63\%). This concludes that as the initial exposure rate increase, the percentage of the infected individuals also increases. Implementation of Lockdown and Quarantine Area also shows that without lockdown and quarantine, the rate peaks at 55.01\%. With lockdown but no quarantine, it drops to 28.54\% (-26.47\%). When only a quarantine area is implemented, the rate is 30.16\% (-24.85\%). With both lockdown and quarantine, it further decreases to 28.67\% (-26.34\%). These findings highlight the effectiveness of containment strategies in controlling infection rates during a pandemic.
+\\
+ }
+
+%\biodatatrue 
+
+\beforepreface 
+
+\tableofcontents
+
+\newpage
+
+\acknowledgetrue
+\acknowledgepage
+\indent Completing this special problem has been a journey filled with the support and encouragement of many individuals, without whom it would not have been possible. I extend my heartfelt appreciation to the following individuals:
+
+First and foremost, I express my deepest gratitude to my advisor, Mr. Joel M. Addawe, Ph.D. Your unwavering support, guidance, and insights have been instrumental throughout this process. Your patience, understanding, and constructive feedback have truly enhanced the quality of this paper.
+
+To my adviser, Ma'am Ash, thank you for your guidance and support from my freshman years until my remaining months at the university. Your encouragement has been invaluable.
+
+To my family—Mama, Papa, MJ, and Jamy—thank you for your unwavering support and countless sacrifices. Your constant encouragement and the warmth of home provided me with the strength and solace needed to navigate through the challenges of this journey.
+
+I am immensely grateful to Chezka, my former partner in this Special Problem. Your collaboration, knowledge sharing, and exchange of ideas were integral to the completion of this paper. I also extend my gratitude to my ABG friends—Lance, Gab, Maj, Pat, and Rosseau—for their significant contributions and companionship throughout the process. Working on this paper with all of you never made me feel alone amidst the struggles.
+
+To Chien, who has been my senior and a source of unwavering support since before this study began, thank you for your helpful guidance.
+
+Lastly, I offer my deepest gratitude to God, whose steadfast presence has been my guiding light and greatest source of strength throughout this journey. In moments of doubt and weariness, His grace sustained me and gave me the courage to persevere.
+
+Each of you has played a significant role in shaping this work, and for that, I am truly thankful.
+
+\abstractpage
+\listoftables
+\listoffigures
+
+\afterpreface
+
+\include{intro}
+\include{chap2}
+\include{prelims}
+
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\nocite*      % -- comment out if you want to include all references in the bibliog file
+\bibliographystyle{siam}
+\bibliography{bibliog}
+
+\appendix
+\input{appendix}
+\input{appendix1}
+\input{appendix2}
+\input{appendix3}
+\input{appendix4}
+\input{appendix5}
+\input{appendix5.5}
+\input{appendix6}
+\input{appendix7}
+\input{appendix8}
+\input{appendix9}
+\input{appendix13.5}
+\input{appendix10}
+\input{appendix11}
+\input{appendix12}
+\input{appendix13}
+\input{appendix9.9}
+\input{code}
+\input{code2}
+\input{code3}
+
+\end{document}

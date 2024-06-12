@@ -1,0 +1,611 @@
+\chapter{Source Code for Implementation of \\ Lockdown and
+Quarantine Area}
+\scriptsize
+\begin{verbatimtab}[4]
+    /**
+    * Name: Simple SEIR Model
+    * Author: Legaspi, Myla Jean
+    * Description: SEIR Agent-based Model for randomly placed agents in the whole campus
+    * Tags: tutorial, gis
+    */
+    
+    model CR4_School
+    
+    global {
+        int basenum_human <-2225;  // This is the actual number of population in the School
+        int init_human_pop <- basenum_human * congestion_rate; //initialization of population
+         in the simulation with respect to the congestion rate
+        int total_pop <- init_human_pop update: init_human_pop; //total population at the end
+         of simulation
+        int init_inf <- 0.10*init_human_pop; //initial number of infected with respect to the
+         rate of infected individuals
+        int init_expo <- 0.10*init_human_pop;
+        
+        list<people_in_rooms> list_people_in_rooms update: (room accumulate each.people_in_rooms);
+        float stay_coeff update: 10.0 ^ (1 + min([ abs(current_date.hour - 17)]));
+    //	float lockdown <- true update: (current_day.hour > 7 and current_day.hour <= 21);
+    //	int infected <- init_inf update: people count (each.is_infected);
+    //	int recovered <- 0 update: people count (each.is_recovered);
+    //	int exposed <-init_expo update: people count (each.is_exposed);
+    //	int susceptible <- init_human_pop - (init_inf + init_expo) update: people count
+     (each.is_susceptible);
+        int infected <- init_inf update: (people + list_people_in_rooms) count (each.is_infected);
+        int recovered <- 0 update: (people + list_people_in_rooms) count (each.is_recovered);
+        int exposed <-init_expo update: (people + list_people_in_rooms) count (each.is_exposed);
+        int susceptible <- init_human_pop - (init_inf + init_expo) update:
+         (init_human_pop-(exposed+infected+recovered));
+    
+        int cycle_number <- 0 update: cycle_number + 1;
+        
+       //Parameters 
+        float agent_speed <- 50.0 #cm/#s;    
+        float infection_distance <- 1 #m;
+        float exposed_distance <- 2 #m;
+        float min_distance <- 1.0 #m;
+        float protection_rate <- 0.50;
+        float congestion_rate <- 1.0;  
+        float proba_infection <- 1.0 - protection_rate;
+        float proba_exposed <- 0.25;
+       float step <- 10 #minutes;
+       int current_day <-1 update:current_date.hour = 0 and current_date.minute = 0 ? current_day + 1: current_day;
+       bool is_night <- true update: current_date.hour < 7 or current_date.hour >= 18;
+       bool lockdown <- true update:(current_date.hour > 7 and current_date.hour <=17);
+        file hallways_shapefile <- file("../includes/hallways.shp");
+        file road_shapefile <- file("../includes/roaad.shp");	
+        file rooms_shapefile <- file("../includes/nqbuilding.shp");
+        file space_shapefile <- file("../includes/space.shp");	
+        file qroom_shapefile <- file("../includes/qua.shp");
+        graph road_network;	
+        //file road_shapefile <- file("../includes/road5.shp");		
+        geometry shape <- envelope(hallways_shapefile);	
+        graph the_graph;
+        
+        int min_work_start <- 9;
+        int max_work_start <- 10;
+        int min_work_end <- 14; 
+        int max_work_end <- 15; 
+        int min_start_class <-7;
+        int max_start_class <-7;
+        int min_end_class <-16;
+        int max_end_class <-20;
+        int min_start_break <- 9;
+        int max_start_break <- 9;
+        int min_end_break<-10;
+        int max_end_break<-11;
+        int min_start_lunch <-12;
+        int max_start_lunch <-12;
+        int min_end_lunch <- 13;
+        float max_end_lunch <- 13.5;
+        
+        //float min_speed <- 0.001 #km / #h;
+        //float max_speed <- 0.002 #km / #h;
+        
+        init {
+            /* Create the simulation space from the shapefiles */
+            create hallway from: hallways_shapefile;
+            create room from: rooms_shapefile;
+            //create openfield from: field_shapefile;
+            create road from: road_shapefile ;
+            road_network <- as_edge_graph(road);
+            create space from: space_shapefile;
+            //the_graph <- as_edge_graph(road);
+            create qroom from: qroom_shapefile;
+            
+            create people number: init_human_pop {
+                assigned_room <- one_of(room);
+                   location <- any_location_in(assigned_room);
+                   
+                   
+                   //speed <- rnd(min_speed, max_speed);
+                start_work <- rnd (min_work_start, max_work_start);
+                end_work <- rnd(min_work_end, max_work_end);
+                class_start <- rnd(min_start_class, max_start_class);
+                class_end <- max_end_class;
+                break_start <- min_start_break;
+                break_end <- min_end_break;
+                lunch_start <- min_start_lunch;
+                lunch_end <- min_end_lunch;
+                
+                speed <- agent_speed;
+                
+            }//end create people 
+            
+            ask init_inf among people {
+               is_infected <- true;
+               is_susceptible <- false;
+               is_recovered <- false;
+               is_exposed <-false;   
+               is_immuned <- false;  
+               
+               infected_time <- 0;
+               infectious_period <- rnd(1440, 2016); //10-14 days of being infectious
+            }//end ask init inf   
+            
+            ask init_expo among people{
+                is_exposed <- true;
+                is_infected <-false;
+                is_susceptible <- false;
+                is_recovered <- false;
+                is_immuned<- false;
+                exposed_time <- 0;
+                exposed_period <-rnd(288,1440); 
+            }
+            
+       }//end init 
+       
+    /* Behavior  */
+    
+        species people skills: [moving] {
+            bool is_susceptible <- true;
+            bool is_infected <- false;
+            bool is_recovered <- false;
+            bool is_exposed <-false;
+            bool is_immuned <- false;
+            float range <- 3.0 #m;
+            list<people> neighbors;
+            bool social_distancing <- false;
+            float distance <- 1.0;
+            float agent_speed <- 50 #cm/#s;
+            int infectious_days <- 0;
+            int exposed_days <-0;
+            int infectious_period <- rnd(1440, 2016);
+            int exposed_period <- rnd(288,1440);
+            int recovered_days <-0;
+            int recovered_period <- rnd(288,1440);
+            int expose_counter <-0;
+            int exposed_time <-0;
+            int infected_time <- 0;
+            int recovered_time <- 0;
+            room assigned_room;
+            hallway all_hallways;
+            
+            bool is_night <- true;
+            bool can_wander_outside <- true;
+            point the_target <- nil ;
+            int start_work ;
+            int end_work  ;
+            int class_start;
+            int class_end;
+            int break_start;
+            int break_end;
+            int lunch_start;
+            int lunch_end;
+            
+            int stay_counter;
+        
+            
+            point target;
+            
+    //	reflex time_to_class when: current_date.hour = class_start{
+    //		do wander;
+    //		
+    //		target <- any_location_in (assigned_room);
+    //	}
+    //	reflex time_to_break when: current_date.hour = break_start{
+    //		do wander;
+    //		do goto target: target on:road_network;	
+    //	}
+    //	reflex time_to_class_afterbreak when: current_date.hour = break_end{
+    //		do wander;
+    //		target <- any_location_in (assigned_room);	
+    //	}
+    //	reflex time_to_lunch when: current_date.hour = lunch_start{
+    //		do wander;
+    //		do goto target: target on:road_network;	
+    //	}
+    //	reflex time_to_class_afterlunch when: current_date.hour = lunch_end{
+    //		do wander;
+    //		
+    //		target <- any_location_in (assigned_room);
+    //	}	
+    //	reflex time_to_go_home when: current_date.hour = class_end{
+    //		do wander;
+    //		do goto target: target on: road_network;
+    //	} 
+    //	reflex night when: is_night = true{
+    //		do wander;
+    //		target <- any_location_in (assigned_room);
+    //	}
+    
+    //	reflex lockdown when:lockdown {
+    //		target <- nil;
+    //		stay_counter <- 0;
+    //		if flip(stay_counter/stay_coeff){
+    //			target <- any_location_in (one_of(room));
+    //		}
+    //	}
+        reflex lockdown when: lockdown{
+            target <- nil;
+            stay_counter <-0;
+            if flip(stay_counter/ stay_coeff){
+                target <- any_location_in(one_of(room));
+            }
+        }
+        
+        reflex move when: target != nil {
+            do goto target: target on: road_network;
+            if (location = target) {
+                if (is_night = true){
+                    agent_speed <- 0.0;
+                    target <- nil;
+                    stay_counter <- 0;
+                } else{
+                    target <- nil;
+                    stay_counter <- 0;
+                }
+                
+            }
+            
+    
+        }
+        reflex stay when: target = nil{
+            if(not lockdown){
+                stay_counter <- stay_counter + 1;
+                if flip (stay_counter/stay_coeff){
+                    if(is_infected){
+                        agent_speed <- 0.0;
+                        if ((cycle_number - infected_time >= 144) and (cycle_number - infected_time <= 2016)){
+                            target <- any_location_in(one_of(qroom));
+                        } else {
+                            target <- any_location_in(one_of(room));
+                        }
+                    }
+                } else {
+                    if (is_infected){
+                        if ((cycle_number - infected_time >= 144) and (cycle_number - infected_time)){
+                            target <- any_location_in(one_of(qroom));
+                        }
+                    }else if (is_recovered){
+                        target <- any_location_in(one_of(room));
+                    }
+                }
+            }
+        }
+        reflex exposed when: is_infected{
+                ask people at_distance exposed_distance {
+                    if (is_immuned = true){
+                        
+                        is_susceptible <- false;
+                        is_exposed <- false;
+                        is_infected <- false;
+                    }else {
+                        expose_counter <- expose_counter + 1;
+                        if(is_susceptible = true){
+                            if (expose_counter >= 2 and flip(proba_exposed)){
+                            is_exposed<-true;
+                            is_susceptible<-false;
+                            is_recovered <- false;
+                            is_infected <- false;
+                            is_immuned <- false;
+                            
+                            float immunity <- rnd(0.0, 1.0);
+                               exposed_time <- cycle_number;
+                               exposed_period <-rnd(288,1440); //2 days - 10 days incubation
+                                perios, before maging infected or not.
+                               //write "exposed:" +people + "exposed time" + cycle_number/144;
+                            } //end inner if
+                        }
+                    } //end if else
+                    
+                    
+                        
+                 }//end ask people at distance
+            }//end exposed; agents to be exposed
+               
+    //		reflex days_of_exposure when: is_exposed {
+    //			if (is_exposed){
+    //		   		exposed_days <- cycle_number - exposed_time;
+    //		   		//write "exposed days:" + exposed_days/144;
+    //		   	}// end if	
+    //		}//end reflex days of exposure; exposure counter 
+    //			
+            reflex infect when: is_exposed {
+                ask people at_distance infection_distance {
+                    if(is_exposed=true){
+                        if ((cycle_number - exposed_time) >= exposed_period){
+                        float immunity <- rnd(0.0,1.0);
+                        //write "Immunity" + immunity;
+                        if (immunity < proba_infection) {
+                            is_infected <- true;
+                            is_susceptible <- false;
+                            is_exposed <-false;
+                            is_recovered <-false;
+                            is_immuned <- false;
+                            
+                            infected_time <- cycle_number;
+                            infectious_period <- rnd(2016,2736) ; //14 -19  days
+                            //write "infected:" + people;
+                        }//end inner if
+                        else {
+                            is_exposed <-false;
+                            is_infected <-false;
+                            is_susceptible <- true;
+                            is_recovered <-false;
+                            is_immuned <- false; 
+                        }
+                    }//end outer if	
+                    }
+                    
+                    
+                }//end people at distance;
+                 computes if iyong distance ng neighbor is pasok sa infection distance 
+            } //end reflex
+            
+    //		   
+    //		reflex days_of_infection when: is_infected {
+    //			if (is_infected){
+    //				infectious_days <- cycle_number - infected_time;
+    //		   		//write "infectious days:" + infectious_days;
+    //		   	} //end if
+    //		}// end reflex days; day of infection counter
+    //	
+    //	
+            reflex recovered when: is_infected {
+                if ((cycle_number - infected_time) >= infectious_period) {  
+                	// Use >= instead of =
+                    is_susceptible <- false;
+                    is_recovered <- true;
+                    is_infected <- false;
+                    is_exposed <-false;
+                    is_immuned <-true;
+                    recovered_days <- 0;
+                        
+                     recovered_time <- cycle_number;
+                    // Assuming recovered_period should be based on some parameter,
+                     adjust accordingly
+                    recovered_period <- rnd(2880, 8640); // Set a meaningful value or use a parameter 
+                    //write "Recovered: " + self; // Use 'self' to refer to the current agent
+                }//end if
+            }//end recovered
+                
+    //		reflex days_of_recovery when: is_recovered {
+    //			recovered_days <- cycle_number -  recovered_time;
+    //		}//end days of recovery
+                
+            reflex susceptible when: is_recovered {
+                if ((cycle_number - recovered_time) >= recovered_period) {  // Use >= instead of =
+                    is_susceptible <- true;
+                    is_exposed <- false;
+                    is_infected <- false;
+                    is_recovered <- false;
+                    is_immuned <- false;
+                    
+                }//end if
+            }//end reflex
+        
+        aspect circle {
+            draw circle(0.2) color: is_exposed ? #yellow : (is_infected ? #red :
+             (is_recovered ? #green : (is_susceptible ? #green : #blue)));
+            //draw triangle(0.2) color: is_exposed ? #yellow : (is_infected ? #red :
+             (is_recovered ? #green : (is_susceptible ? #green : #blue)));
+        }	
+        
+            aspect sphere3D {
+            draw sphere(0.2) at: {location.x, location.y, location.z + 2} color:
+             is_susceptible? #blue :(is_exposed ? #yellow : (is_infected ? #red :
+              (is_recovered ? #green: #green)));
+        
+        }
+            
+        }//end species students
+        
+        species space{
+            aspect default{
+                draw shape color: #white border: #black;
+            }
+        }
+        species intersection skills: [intersection_skill] ;
+        species hallway{
+            geometry display_shape <- shape + 0.5;
+            aspect default{
+                draw display_shape color: #tan depth: 0.5;
+            }
+        } // end hallway
+        
+    //	species room{
+    //
+    //		float height <- rnd(5#m, 7#m);
+    //		aspect default{
+    //			draw shape color: #gray border: #black depth: height;
+    //		}
+    //	} // end room
+        
+        species road{
+            geometry display_shape <- shape + 0.5;
+            aspect default{
+                draw display_shape color: #black depth: 0.5;
+            }
+        }
+    species qroom{
+        float height <- 5#m;
+        
+        aspect default {
+            draw shape color: #pink border: #black depth: height;
+        }
+    }
+        species room{
+            int num_susceptible <- 0 update: self.people_in_rooms count each.is_susceptible;
+            int num_exposed <- 0 update: self.people_in_rooms count each.is_exposed;
+            int num_infected <- 0 update: self.people_in_rooms count each.is_infected;
+            int num_recovered <- 0 update: self.people_in_rooms count each.is_recovered;
+            int num_total <- 0 update: length(self.people_in_rooms);
+            float height <- rnd(5 #m, 10 #m);
+            
+            species people_in_rooms parent: people schedules: [] {
+            }
+            
+            reflex people_leave {
+                ask people_in_rooms {
+                    stay_counter <- stay_counter + 1;
+                }
+            
+                release people_in_rooms where (flip(each.stay_counter / stay_coeff)) as:
+                 people in: world {
+                    if(is_infected and (is_night = true)){
+                        agent_speed <- 0.0;
+                        if((cycle_number - infected_time >= 144) and (cycle_number - infected_time <= 2016)){
+                            target <- any_location_in(one_of(qroom));
+                        } else{
+                            target <- any_location_in(one_of(room));
+                        }
+                    } else if(is_infected and (is_night =false)){
+                        //agent_speed <- 0.0;
+                        if((cycle_number - infected_time >= 144) and (cycle_number - infected_time <= 2016)){
+                            target <- any_location_in(one_of(qroom));
+                        } else{
+                            target <- any_location_in(one_of(room));
+                        }
+                        
+                    } else{
+                        target <- any_location_in(one_of(room));
+                    }
+                }
+            }
+            reflex let_people_enter {
+            capture (people inside self where (each.target = nil)) as: people_in_rooms;
+        }
+    //		reflex let_people_enter {
+    //		capture (people inside self where (each.target = nil)) as: people_in_rooms;
+    //	}
+        aspect default {
+            draw shape color: num_total = 0 ? #gray : (float(num_infected) / num_total > 0.5
+             ? #red : #green) border: #black depth: height;
+        }
+        }//end species room
+        
+        
+        float susceptible_rate <- 1.0 update: susceptible / init_human_pop;
+        float exposed_rate update: exposed / init_human_pop;
+        float infection_rate update:infected/init_human_pop;
+        float recovery_rate update: recovered/init_human_pop;
+        
+        int highest_susceptible_rate_day <- 0;
+        float highest_susceptible_rate <- 0.0;
+        reflex susceptible_rate when: susceptible_rate > highest_susceptible_rate{
+            highest_susceptible_rate <- susceptible_rate;
+            highest_susceptible_rate_day <- cycle_number/144;
+        }	
+        
+        int highest_exposure_rate_day <- 0;
+        float highest_exposure_rate <- 0.0;
+        reflex exposed_rate when: exposed_rate > highest_exposure_rate{
+            highest_exposure_rate <- exposed_rate;
+            highest_exposure_rate_day <- cycle_number/144;
+        }	
+        
+        
+        int highest_infection_rate_day <- 0;
+        float highest_infection_rate <- 0.0;
+        reflex infection_rate when: infection_rate > highest_infection_rate{
+            highest_infection_rate <- infection_rate;
+            highest_infection_rate_day <- cycle_number/144;
+        }
+        
+        int highest_recovery_rate_day <- 0;
+        float highest_recovery_rate <- 0.0;
+        reflex recovery_rate when: recovery_rate > highest_recovery_rate{
+            highest_recovery_rate <- recovery_rate;
+            highest_recovery_rate_day <- cycle_number/144;
+        }
+        
+        reflex end_simulation when: cycle_number = 31680 #cycles{
+            do pause;
+        }//end cycle number counter
+        
+        reflex print {
+            if(current_date.hour = 0 and current_date.minute = 0){
+                write "" + (current_day - 1) + " & " + init_human_pop + " & " + susceptible +
+                 " & " + exposed + " & " + infected + " & " + recovered + " ";	
+            }
+            if(cycle_number = 31680){
+                write "\\\\hline";
+                write "\\\\textbf{ " + "S - " + (highest_susceptible_rate) + "} & " +
+                 highest_susceptible_rate_day + " \\\\ ";
+                write "\\\\textbf{ " + "E - " + (highest_exposure_rate) + "} & " +
+                 highest_exposure_rate_day + " \\\\ ";
+                write "\\\\textbf{ " + "I - " + (highest_infection_rate) + "} & " +
+                 highest_infection_rate_day + " \\\\ ";
+                write "\\\\textbf{ " + "R - " + (highest_recovery_rate) + "} & " +
+                 highest_recovery_rate_day + " \\\\ ";
+            }
+        }
+    
+    }//end global
+    
+    experiment main_experiment type: gui {
+        parameter "Initial Human Population" var: init_human_pop;
+        parameter "Infection distance" var: infection_distance;
+        parameter "Exposure distance" var: exposed_distance;
+        parameter "Proba infection" var: proba_infection min: 0.0 max: 1.0;
+        parameter "Proba exposure" var: proba_exposed min: 0.0 max: 1.0;
+        parameter "Nb people infected at init" var: init_inf ;
+        //parameter "Social Distancing" var: social_distancing;
+        
+        output {
+            monitor "Initial Population" value: init_human_pop;
+            //monitor "Current Population" value: total_pop;
+            monitor "Number of susceptible agents" value: susceptible;
+            monitor "Number of exposed agents" value: exposed;
+            monitor "Number of infected agents" value: infected;
+            monitor "Number of recovered agents" value: recovered;
+            
+            monitor "Susceptible rate:" value: susceptible_rate;
+            monitor "Exposure rate:" value: exposed_rate;
+            monitor "Infection rate:" value: infection_rate;
+            monitor "Recovery rate:" value: recovery_rate;
+            
+            monitor "Current day" value: cycle_number/144;
+            monitor "Current time:" value: current_date.hour;
+            
+            monitor "Highest susceptible rate" value: highest_susceptible_rate;
+            monitor "Highest exposure rate" value: highest_exposure_rate;
+            monitor "Highest infection rate" value: highest_infection_rate;
+            monitor "Highest recovery rate" value: highest_recovery_rate;
+            
+            
+            monitor "Highest susceptible rate day" value: highest_susceptible_rate_day;
+            monitor "Highest exposure rate day" value: highest_exposure_rate_day;
+            monitor "Highest infection rate day" value: highest_infection_rate_day;
+            monitor "Highest recovery rate day" value: highest_recovery_rate_day;
+            
+            display view3D type: opengl antialias: false {
+                light #ambient intensity:20;
+                light #default intensity:(is_night ? 127:255);
+                // 'default' aspect is used automatically  
+                species space;
+                //species road;
+                species hallway ;
+                
+                 
+                species road;
+                species people aspect: sphere3D; 
+                species room transparency: 0.3;
+                species qroom transparency: 0.3;
+                         
+            }//end map
+            
+            display SI type: java2D refresh: every(20  #cycles) {
+                chart "SEIR Rate" type: series 
+                x_label: "TIME"
+                y_label: "RATE"
+                x_tick_line_visible: false
+                y_range: [0,1.0] // can be modified depending
+                                 // maximum rate
+                {
+                    // data "susceptible" value: susceptible_rate color: #blue ;
+                    
+                    data "infected" value: infection_rate color: #red;
+                    data "exposed" value: exposed_rate color: #yellow;
+                    data "recovered" value: recovery_rate color: #green ;
+                    data "susceptible" value: susceptible_rate color: #blue ;
+                    
+                }
+            }
+        }
+     
+
+    
+    
+
+\end{verbatimtab}
+\normalsize

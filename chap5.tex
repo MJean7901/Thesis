@@ -1,0 +1,36 @@
+\chapter{Conclusion and Recommendation}
+\label{chap:Conclusion and Recommendation}
+
+
+
+\section{Conclusion}
+\indent \indent This study introduces an agent-based model and compartmental model for simulating the transmission of respiratory infectious diseases, such as COVID-19, within a specific public high school campus, namely, Pines City National High School in Baguio City. The model integrates a shapefile of the campus, meticulously designed and measured using AutoCAD, with its shapefile subsequently generated using QGIS. This comprehensive representation includes the road network, environment, hallways, quarantine areas and classrooms, forming the virtual map. Within this simulated environment, students, teachers, and staff are depicted as agents, enabling them to interact and navigate the virtual setting. Each agent is assigned a state status based on their current health condition, including Susceptible, Exposed, Infected, and Recovered. Additionally, the model also accounts for virus transmission between agents, governed by rules. 
+
+\indent \indent Three main scenarios were tested to evaluate the roles of various parameters, such as protection rate, exposure rate, and the implementation of lockdown and quarantine areas, in the transmission of respiratory infectious diseases within the campus. 
+
+In Section \ref{S1} different percentages of protection rates were examined. Starting from a scenario with no protection, a concerning surge in infections was observed, highlighting the vulnerability of the population in the absence of protective measures. However, as protection rates increased, a substantial decline in the number of infected individuals over time was noted. This trend continued as protection rates escalated, with each increment leading to a significant decrease in infections and a potential reduction in the severity of subsequent waves of infection. Notably, implementing a 100\% protection rate resulted in the lowest number of infected individuals over time, with no new infections recorded after the recovery of initially infected individuals. This signifies that the higher the protection rate, the lower the number of infected individuals.  This underscores the critical importance of comprehensive immunity measures in effectively controlling disease transmission.
+
+Moving on to the second scenario, in section \ref{S2} we evaluate the effect of varying initial exposure rate to the transmission of respiratory infectious disease. Beginning with the scenario of a 75\% exposure rate,  we observe the highest number of infected individuals. This underscores the heightened risk of disease spread when a larger portion of the population is susceptible to the infectious agent. Transitioning to scenarios with lower exposure rates, such as 50\% and 25\%, we note progressively fewer infected individuals, indicating a reduction in infection rates with decreasing exposure levels. However, even at lower exposure rates, the risk of disease transmission remains substantial, as evidenced by the observed peaks in infection numbers and the presence of multiple waves of infection. Finally, in the scenario with a 0\% exposure rate, where there is no initial exposure, we observe the lowest number of infected individuals. This underscores the heightened risk of disease spread when a larger portion of the population is susceptible to the infectious agent.
+
+Lastly, in section \ref{S3}, we assess the impact of having a Lockdown and Quarantine Area in containing the transmission of respiratory infectious disease. In Figure \ref{LDQ}, significant disparities in the number of infected individuals are observed across the 220-day simulation period among different scenarios. Notably, Scenario \ref{3.1b}, characterized by the absence of both Quarantine Area and Lockdown measures, exhibits the highest number of infections over time. The remaining three scenarios demonstrate similar trends, albeit with slight variations. Scenario 3.3, with the presence of a Quarantine Area but no Lockdown, stands out as the second-highest in terms of infected individuals. Conversely, Scenario \ref{3.2}, featuring both Quarantine Area and Lockdown measures, consistently maintains one of the lowest numbers of infections throughout the 220-day period. Similarly, Scenario \ref{3.4}, which includes a Lockdown but no Quarantine Area, also exhibits consistently low numbers of infections over time. These observations underscore the critical role of non-pharmaceutical interventions, such as quarantine measures and lockdowns, in mitigating the spread of infectious diseases within simulated populations. 
+
+Overall,  this study provides valuable insights into the effectiveness of various parameters in controlling the transmission of respiratory infectious diseases within a campus setting. The findings emphasize the importance of comprehensive immunity measures, with higher protection rates leading to fewer infections. Atleast 0\% to 25\% protection rate is needed to lower the number of infection. The examination of varying initial exposure rates underscores the direct correlation between exposure levels and infection rates. Higher exposure rates result in increased infection rates, highlighting the need for preventive strategies to minimize exposure and mitigate the risk of disease spread within susceptible populations. The assessment also of the impact of lockdown and quarantine measures demonstrates the effectiveness of non-pharmaceutical interventions in containing disease transmission. The presence of lockdown and quarantine measures significantly reduces the number of infections over time, underscoring the critical role of proactive interventions in controlling outbreaks and safeguarding public health.
+
+
+
+
+
+
+\section{Recommendation}
+\indent \indent For future or next study, the author recommends the following avenues for further exploration:
+\begin{itemize}
+	\item[1.] Instead of focusing on the entire school setting, consider narrowing down the scope of investigation to study the transmission of respiratory infectious diseases within individual classrooms. This targeted approach would provide insights into localized patterns of disease spread and help identify specific areas for intervention within the school environment.
+	
+	\item[2.] Explore additional parameters and non-pharmaceutical interventions, such as social distancing measures, mask-wearing compliance, and hand hygiene practices, to assess their role in mitigating the transmission of respiratory infectious diseases. By expanding the range of variables under investigation, a more comprehensive understanding of effective disease control strategies can be achieved.
+	
+	\item[3.] Extend the simulation studies to encompass other settings beyond the school environment. This could include community settings, workplaces, or public transportation systems, to explore the dynamics of disease transmission in diverse contexts. By broadening the scope of analysis, valuable insights can be gained into the effectiveness of intervention strategies across different environments.
+\end{itemize}
+
+
+
+ 

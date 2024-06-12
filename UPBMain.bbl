@@ -1,0 +1,233 @@
+\begin{thebibliography}{10}
+
+\bibitem{a1}
+{\em 1. simple si model | gama platform}.
+
+\bibitem{agentbased}
+{\em Agent-based modeling | columbia public health}.
+
+\bibitem{explanation}
+{\em Explanation and proof of the 4th order runge-kutta method}.
+
+\bibitem{unknown-author-no-date}
+{\em {GAMA | GAMA Platform}}.
+
+\bibitem{runge}
+{\em Runge kutta rk4 method | fourth order runge kutta method}.
+
+\bibitem{SIR}
+{\em {SIR modeling}}.
+
+\bibitem{a2011_infectious}
+{\em Infectious diseases of the respiratory system}, 05 2011.
+
+\bibitem{a2020_covid19}
+{\em Covid-19 inter-agency task force for the management of emerging infectious
+  diseases resolutions | department of health website}, 2020.
+
+\bibitem{a2020_what}
+{\em What are infectious diseases?}, 11 2020.
+
+\bibitem{abouismail_2020_compartmental}
+{\sc A.~Abou-Ismail}, {\em Compartmental models of the covid-19 pandemic for
+  physicians and physician-scientists}, SN Comprehensive Clinical Medicine,
+  (2020).
+
+\bibitem{AHMETOLAN202219}
+{\sc S.~Ahmetolan, A.~H. Bilge, A.~Demirci, and A.~P. Dobie}, {\em A
+  susceptible–infectious (si) model with two infective stages and an endemic
+  equilibrium}, Mathematics and Computers in Simulation, 194 (2022),
+  pp.~19--35.
+
+\bibitem{alexandre_2021_predictive}
+{\sc J.~Alexandre, F.~Nauber, J.~Xavier‐Neto, and S.~Fong}, {\em Predictive
+  Models for Decision Support in the COVID-19 Crisis}, 01 2021.
+
+\bibitem{alvin_2020_modeling}
+{\sc C.~Alvin, D.~S. Lutero, Y.~H. Olave, M.~Torres, and J.~F. Rabajante}, {\em
+  Modeling the transmission of respiratory infectious diseases in mass
+  transportation systems},  (2020).
+
+\bibitem{alvin_2020_transmission}
+{\sc C.~Alvin, D.~S. Lutero, O.~Yh, M.~C. Torres, and J.~F. Rabajante}, {\em
+  Transmission of respiratory infectious diseases between neighboring cities
+  using agent-based model and compartmental model}, medRxiv (Cold Spring Harbor
+  Laboratory),  (2020).
+
+\bibitem{arduin-2017}
+{\sc H.~Arduin, M.~D. De~Cellès, D.~Guillemot, L.~Watier, and L.~Opatowski},
+  {\em {An agent-based model simulation of influenza interactions at the host
+  level: insight into the influenza-related burden of pneumococcal
+  infections}}, BMC infectious diseases, 17 (2017).
+
+\bibitem{arduin_2017_an}
+{\sc H.~Arduin, M.~Domenech~de Cellès, D.~Guillemot, L.~Watier, and
+  L.~Opatowski}, {\em An agent-based model simulation of influenza interactions
+  at the host level: insight into the influenza-related burden of pneumococcal
+  infections}, BMC Infectious Diseases, 17 (2017).
+
+\bibitem{argosino_2021_covid19}
+{\sc F.~Argosino}, {\em Covid-19 response: A timeline of community quarantine,
+  lockdowns, alert levels}, 11 2021.
+
+\bibitem{bjrnstad-2020}
+{\sc O.~N. Bjørnstad, K.~Shea, M.~Krzywinski, and N.~Altman}, {\em {The SEIRS
+  model for infectious disease dynamics}}, Nature methods, 17 (2020),
+  pp.~557--558.
+
+\bibitem{bourne_12}
+{\sc M.~Bourne}, {\em 12. runge-kutta (rk4) numerical solution for differential
+  equations}.
+
+\bibitem{unknown}
+{\sc C.~A. Buhat, D.~Lutero, Y.~Olave, M.~Torres, and J.~Rabajante}, {\em
+  Transmission of respiratory infectious diseases between neighboring cities
+  using agent-based model and compartmental model}, 06 2020.
+
+\bibitem{buhat_2020_determining}
+{\sc C.~A. Buhat and S.~K. Villanueva}, {\em Determining the effectiveness of
+  practicing non-pharmaceutical interventions in improving virus control in a
+  pandemic using agent-based modelling}, Mathematics in Applied Sciences and
+  Engineering, 1 (2020), pp.~423--438.
+
+\bibitem{castiglione_2009_agent}
+{\sc F.~Castiglione}, {\em Agent based modeling and simulation, introduction
+  to}, Encyclopedia of Complexity and Systems Science,  (2009), pp.~197--200.
+
+\bibitem{cheever_2019_fourth}
+{\sc E.~Cheever}, {\em Fourth order runge-kutta}, 2019.
+
+\bibitem{chi_deped_nodate}
+{\sc C.~Chi}, {\em {DepEd} data shows imminent classroom shortage with
+  face-to-face classes}.
+
+\bibitem{chi_2022_deped}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Deped data shows
+  imminent classroom shortage with face-to-face classes}, 07 2022.
+
+\bibitem{ciotti_2020_the}
+{\sc M.~Ciotti, M.~Ciccozzi, A.~Terrinoni, W.-C. Jiang, C.-B. Wang, and
+  S.~Bernardini}, {\em The covid-19 pandemic}, Critical Reviews in Clinical
+  Laboratory Sciences, 57 (2020), pp.~365--388.
+
+\bibitem{cui_2006_spreading}
+{\sc J.~Cui, Y.~Takeuchi, and Y.~Saito}, {\em Spreading disease with
+  transport-related infection}, Journal of Theoretical Biology, 239 (2006),
+  p.~376–390.
+
+\bibitem{ditsworth_2019_infection}
+{\sc M.~Ditsworth}, {\em Infection modeling — part 1}, 02 2019.
+
+\bibitem{centerfordiseasecontrolandprevention_2019_prevention}
+{\sc C.~for Disease~Control and prevention}, {\em Prevention of transmission of
+  respiratory illnesses in disaster evacuation centers|health and safety
+  concerns}, 2019.
+
+\bibitem{g_2023_facility}
+{\sc H.~G}, {\em Facility, chair shortage forces some cordillera schools to
+  continue blended learning}, 11 2023.
+
+\bibitem{anarbiaguedes_2023_reinfection}
+{\sc A.~R. Guedes, M.~Salaroli, B.~, A.~Luna-Muschi, C.~, A.~C. Montal,
+  E.~de~Faria, F.~L. Maia, A.~Dos, M.~D. Leme, F.~M. Tomazini, S.~F. Costa, and
+  A.~S. Levin}, {\em Reinfection rate in a cohort of healthcare workers over 2
+  years of the covid-19 pandemic}, Scientific Reports, 13 (2023).
+
+\bibitem{harder_ece}
+{\sc D.~Harder and M.~Math}, {\em Ece 204 numerical methods 4 th -order
+  runge-kutta method}.
+
+\bibitem{jones_2017_school}
+{\sc N.~Jones}, {\em School congestion in the philippines: a breakthrough
+  solution}, 04 2017.
+
+\bibitem{karami_2021_intro}
+{\sc B.~Karami}, {\em Intro to agent based modeling}, 12 2021.
+
+\bibitem{kermack-1927}
+{\sc W.~O. Kermack and A.~G. McKendrick}, {\em {A contribution to the
+  mathematical theory of epidemics}}, Proceedings of the Royal Society of
+  London. Series A, Containing papers of a mathematical and physical character,
+  115 (1927), pp.~700--721.
+
+\bibitem{khan_2020_covid19}
+{\sc M.~Khan, S.~F. Adil, H.~Z. Alkhathlan, M.~N. Tahir, S.~Saif, M.~Khan, and
+  S.~T. Khan}, {\em Covid-19: A global challenge with old history, epidemiology
+  and progress so far}, Molecules, 26 (2020).
+
+\bibitem{king_2011_virus}
+{\sc A.~M. King, E.~Lefkowitz, M.~J. Adams, and E.~B. Carstens}, {\em Virus
+  Taxonomy: Ninth Report of the International Committee on Taxonomy of
+  Viruses}, Elsevier, 11 2011.
+
+\bibitem{levine_2022_global}
+{\sc S.~M. Levine and D.~D. Marciniuk}, {\em Global impact of respiratory
+  disease – what can we do, together, to make a difference?}, Chest, 161
+  (2022).
+
+\bibitem{macal_2010_tutorial}
+{\sc C.~M. Macal and M.~J. North}, {\em Tutorial on agent-based modelling and
+  simulation}, Journal of Simulation, 4 (2010), pp.~151--162.
+
+\bibitem{abm_covid19}
+{\sc R.~O. Macalinao, J.~C. Malaguit, and D.~S. Lutero}, {\em Agent-based
+  modeling of covid-19 transmission in philippine classrooms}, Frontiers in
+  Applied Mathematics and Statistics, 8 (2022).
+
+\bibitem{denimazrekaj_2023_the}
+{\sc D.~Mazrekaj and K.~D. Witte}, {\em The impact of school closures on
+  learning and mental health of children: Lessons from the covid-19 pandemic},
+  Perspectives on Psychological Science,  (2023).
+
+\bibitem{worldhealthorganization_2020_covid19}
+{\sc W.~H. Organization}, {\em Covid-19 public health emergency of
+  international concern (pheic) global research and innovation forum}, 02 2020.
+
+\bibitem{organization_2020_modes}
+{\sc W.~H. Organization}, {\em Modes of transmission of virus causing covid-19:
+  implications for ipc precaution recommendations: scientific brief, 29 march
+  2020}, iris.who.int,  (2020).
+
+\bibitem{worldhealthorganization_2021_the}
+{\sc W.~H. Organization}, {\em The different types of covid-19 vaccines}, 01
+  2021.
+
+\bibitem{worldhealthorganization_2023_who}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Who coronavirus
+  (covid-19)}, 2023.
+
+\bibitem{qian_2020_covid19}
+{\sc M.~Qian and J.~Jiang}, {\em Covid-19 and social distancing}, Journal of
+  Public Health, 30 (2020), pp.~259--261.
+
+\bibitem{soriano_2021_main}
+{\sc V.~Soriano, P.~Ganado-Pinilla, M.~Sanchez-Santos, F.~Gómez-Gallego,
+  P.~Barreiro, C.~de~Mendoza, and O.~Corral}, {\em Main differences between the
+  first and second waves of covid-19 in madrid, spain}, International Journal
+  of Infectious Diseases, 105 (2021), pp.~374--376.
+
+\bibitem{university_2020_modeling}
+{\sc S.~University}, {\em Modeling social distancing’s impact}, 03 2020.
+
+\bibitem{incremental}
+{\sc unknown}, {\em Incremental model gama platform}.
+
+\bibitem{vandoremalen_2020_aerosol}
+{\sc N.~van Doremalen, T.~Bushmaker, D.~H. Morris, M.~G. Holbrook, A.~Gamble,
+  B.~N. Williamson, A.~Tamin, J.~L. Harcourt, N.~J. Thornburg, S.~I. Gerber,
+  J.~O. Lloyd-Smith, E.~de~Wit, and V.~J. Munster}, {\em Aerosol and surface
+  stability of sars-cov-2 as compared with sars-cov-1}, New England Journal of
+  Medicine, 382 (2020), pp.~1564--1567.
+
+\bibitem{worldhealthorganizationwho_2020_statement}
+{\sc W.~H.~O. WHO}, {\em Statement on the second meeting of the international
+  health regulations (2005) emergency committee regarding the outbreak of novel
+  coronavirus (2019-ncov)}, 01 2020.
+
+\bibitem{ye_2021_impact}
+{\sc Q.~Ye and H.~Liu}, {\em Impact of non-pharmaceutical interventions during
+  the covid-19 pandemic on common childhood respiratory viruses – a
+  epidemiological study based on hospital data}, Microbes and Infection,
+  (2021), p.~104911.
+
+\end{thebibliography}

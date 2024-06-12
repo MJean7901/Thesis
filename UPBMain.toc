@@ -1,0 +1,110 @@
+\contentsline {chapter}{Acknowledgments}{vii}{chapter*.2}%
+\contentsline {chapter}{Abstract}{ix}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{xiii}{chapter*.4}%
+\contentsline {chapter}{\numberline {Chapter 1.}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Background of the Study}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Statement of the Problem}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objective of the Study}{3}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}General Objective of the Study}{3}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Specific Objective of the Study}{3}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Significance of the Study}{4}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Scope and Limitation}{4}{section.1.5}%
+\contentsline {chapter}{List of Figures}{1}{chapter*.5}%
+\contentsline {chapter}{\numberline {Chapter 2.}Review of Related Literature}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Respiratory Infectious Diseases}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}COVID-19}{7}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Public Schools Health Protocol for COVID-19}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Agent Based Modeling}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}ABM for COVID-19 Transmission}{9}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Gama Platform}{11}{section.2.4}%
+\contentsline {chapter}{\numberline {Chapter 3.}Preliminaries}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1} Compartmental Model}{12}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Susceptible-Infected (SI) Model}{12}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2} Susceptible-Infected-Recovered (SIR) Model}{14}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Susceptible-Exposed-Infected-Recovered (SEIR) Model}{15}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Agent-Based Modelling}{16}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5} Simulation Space}{17}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Agents}{17}{subsection.3.1.6}%
+\contentsline {subsubsection}{State of the Agents}{19}{section*.11}%
+\contentsline {subsubsection}{ Movement of Agents}{20}{section*.13}%
+\contentsline {subsection}{\numberline {3.1.7}Exposure and Infection Rule}{22}{subsection.3.1.7}%
+\contentsline {chapter}{\numberline {Chapter 4.}Methodology}{24}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Model Implementation in PCNHS}{24}{section.4.1}%
+\contentsline {section}{\numberline {4.2}SEIR Model}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Parameters}{25}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Simulation Space of the Simulation}{28}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Constructing the Shapefile Structure}{28}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Classrooms}{30}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Quarantine Area}{31}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Environment}{32}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Road Network}{32}{subsection.4.4.5}%
+\contentsline {section}{\numberline {4.5} The Agents}{35}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Position and Assignment of Agent into the Simulation}{35}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}State of the Agents in the Simulation}{36}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Movement Rule of the Agents}{37}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Transmission of the Respiratory Infectious Disease}{40}{subsection.4.5.4}%
+\contentsline {subsubsection}{Exposure Rule: Identifying if a susceptible (s) agent will get exposed}{40}{section*.27}%
+\contentsline {subsubsection}{Infection Rule: Identifying if an exposed (e) agent will get infected}{42}{section*.29}%
+\contentsline {subsubsection}{Recovery Rule: Identifying if an infected (i) agent will recover}{43}{section*.31}%
+\contentsline {section}{\numberline {4.6} Simulation Scenarios}{44}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1} Scenario 1: Varying Protection Rate}{44}{subsection.4.6.1}%
+\contentsline {subsubsection}{Scenario 1.1: 0\% Protection Rate}{45}{section*.33}%
+\contentsline {subsubsection}{ Scenario 1.2: 25\% Protection Rate}{47}{section*.36}%
+\contentsline {subsubsection}{ Scenario 1.3: 50\% Protection Rate}{49}{section*.39}%
+\contentsline {subsubsection}{Scenario 1.4: 75\% Protection Rate}{51}{section*.42}%
+\contentsline {subsubsection}{Scenario 1.5: 100\% Protection Rate}{53}{section*.45}%
+\contentsline {subsection}{\numberline {4.6.2} Scenario 2: Varying Initial Exposure Rate}{55}{subsection.4.6.2}%
+\contentsline {subsubsection}{Scenario 2.1: 0\% Initial Exposure Rate}{55}{section*.48}%
+\contentsline {subsubsection}{Scenario 2.2 25\% Initial Exposure Rate}{57}{section*.51}%
+\contentsline {subsubsection}{Scenario 2.3: 50\% Initial Exposure Rate}{59}{section*.54}%
+\contentsline {subsubsection}{Scenario 2.4: 75\% Initial Exposure Rate}{61}{section*.57}%
+\contentsline {subsection}{\numberline {4.6.3} Scenario 3: Implementation of Lockdown and Quarantine Area}{63}{subsection.4.6.3}%
+\contentsline {subsubsection}{ Scenario 3.1 No Lockdown and No Quarantine Area}{64}{section*.60}%
+\contentsline {subsubsection}{ Scenario 3.2 Implementation of Lockdown and No Quarantine Area}{68}{section*.64}%
+\contentsline {subsubsection}{ Scenario 3.3 Implementation of Quarantine Area but No Lockdown}{71}{section*.68}%
+\contentsline {subsubsection}{ Scenario 3.4 Implementation of Lockdown and No Quarantine Area}{75}{section*.72}%
+\contentsline {section}{\numberline {4.7}Gathering of Data}{78}{section.4.7}%
+\contentsline {chapter}{\numberline {Chapter 5.}Results and Discussion}{79}{chapter.5}%
+\contentsline {section}{\numberline {5.1} Scenario 1: Varying Protection Rates}{79}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1} Scenario 1.1 SEIR Dynamics in a 0\% Protection Rate}{79}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2} Scenario 1.2 SEIR Dynamics in a 25\% Protection Rate}{81}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3} Scenario 1.3 SEIR Dynamics in a 50\% Protection Rate}{83}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Scenario 1.4 SEIR Dynamics in a 75\% Protection Rate}{85}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5} Scenario 1.5 SEIR Dynamics in a 100\% Protection Rate}{87}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6} Comparison on the number of Infected Individuals across different varying Protection rates (0\%, 25\%. 50\%. 75\%, 100\%)}{90}{subsection.5.1.6}%
+\contentsline {section}{\numberline {5.2} Scenario 2: Varying Exposure Rates}{94}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1} Scenario 2.1 SEIR Dynamics in a 0\% Initial Exposure Rate}{95}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2} Scenario 2.2 SEIR Dynamics in a 25\% Initial Exposure Rate}{97}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Scenario 2.3 SEIR Dynamics in a 50\% Initial Exposure Rate}{99}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4} Scenario 2.4 SEIR Dynamics in a 75\% Initial Exposure Rate}{101}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5} Comparison on the number of Infected Individuals across different varying Initial Exposure rates (0\%, 25\%. 50\%. 75\%)}{103}{subsection.5.2.5}%
+\contentsline {section}{\numberline {5.3}Scenario 3: Implementation of Lockdown and Quarantine Area}{107}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1} Scenario 3.1 No Lockdown and No Quarantine Area}{108}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2} Scenario 3.2 Implementation of Lockdown and No Quarantine Area}{110}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3} Scenario 3.3 Implementation of having a Quarantine Area and No Lockdown}{113}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4} Scenario 3.4 Implementation of Lockdown and Quarantine Area}{116}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5} Comparison on the number of Infected Individuals across different varying Implementation of Lockdown and Quarantine Area}{118}{subsection.5.3.5}%
+\contentsline {chapter}{\numberline {Chapter 6.}Conclusion and Recommendation}{123}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusion}{123}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Recommendation}{125}{section.6.2}%
+\contentsline {chapter}{List of References}{127}{chapter*.117}%
+\contentsline {chapter}{\numberline {Appendix A.}Population Data for \\ Pines City National High School }{132}{appendix.A}%
+\contentsline {chapter}{\numberline {Appendix B.}Table for 0\% Protection Rate}{134}{appendix.B}%
+\contentsline {chapter}{\numberline {Appendix C.}Table for 25\% Protection Rate}{136}{appendix.C}%
+\contentsline {chapter}{\numberline {Appendix D.}Table for 50\% Protection Rate}{138}{appendix.D}%
+\contentsline {chapter}{\numberline {Appendix E.}Table for 75\% Protection Rate}{140}{appendix.E}%
+\contentsline {chapter}{\numberline {Appendix F.}Table for 100\% Protection Rate}{142}{appendix.F}%
+\contentsline {chapter}{\numberline {Appendix G.}Table for the comparison of\\ all the Protection Rates}{144}{appendix.G}%
+\contentsline {chapter}{\numberline {Appendix H.}Table for 0\% Initial Exposure Rate}{145}{appendix.H}%
+\contentsline {chapter}{\numberline {Appendix I.}Table for 25\% Initial Exposure Rate}{147}{appendix.I}%
+\contentsline {chapter}{\numberline {Appendix J.}Table for 50\% Initial Exposure Rate}{149}{appendix.J}%
+\contentsline {chapter}{\numberline {Appendix K.}Table for 75\% Initial Exposure Rate}{151}{appendix.K}%
+\contentsline {chapter}{\numberline {Appendix L.}Table for the comparison of\\ the Implementation of Lockdown \\and Quarantine Area}{153}{appendix.L}%
+\contentsline {chapter}{\numberline {Appendix M.}Table for No Lockdown \\ and No Quarantine Area}{154}{appendix.M}%
+\contentsline {chapter}{\numberline {Appendix N.}Table for Lockdown and \\ No Quarantine Area}{156}{appendix.N}%
+\contentsline {chapter}{\numberline {Appendix O.}Table for Quarantine Area and \\ No Lockdown}{158}{appendix.O}%
+\contentsline {chapter}{\numberline {Appendix P.}Table for Quarantine Area and Lockdown}{160}{appendix.P}%
+\contentsline {chapter}{\numberline {Appendix Q.}Table for the comparison of\\ all the Initial Exposure Rates }{162}{appendix.Q}%
+\contentsline {chapter}{\numberline {Appendix R.}Source Code for Varying Protection Rate}{163}{appendix.R}%
+\contentsline {chapter}{\numberline {Appendix S.}Source Code for Varying \\Initial Exposure Rate}{176}{appendix.S}%
+\contentsline {chapter}{\numberline {Appendix T.}Source Code for Implementation of \\ Lockdown and Quarantine Area}{189}{appendix.T}%

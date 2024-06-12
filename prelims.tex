@@ -1,0 +1,224 @@
+\chapter{Preliminaries}
+\label{chap:Preliminaries}
+
+\section{ Compartmental Model}
+
+
+\hspace{1 cm}The compartmental model is a prevalent modeling technique in epidemiology, where the population is divided into compartments such as susceptible, exposed, infectious, recovered, or deceased. \cite{incremental} Individuals can transition between these compartments based on predefined rules. This model can be implemented using deterministic differential equations (equation-based model) or a stochastic framework (agent-based model). \cite{kermack-1927}
+
+\hspace{1 cm}Epidemiological studies that utilize compartmental models categorize the population into distinct compartments. Among these models, the SIR model is widely used. It serves as a central component in various studies exploring the transmission dynamics of COVID-19. These models are instrumental in understanding the spread of COVID-19, aiding in predicting regional pandemic peaks and evaluating the impacts of different quarantine measures. \cite{abouismail_2020_compartmental}
+
+\subsection{Susceptible-Infected (SI) Model}
+\indent \indent The Susceptible-Infected (SI) Model is known to be the simplest form of disease models where individuals can be categorized either as susceptible or infected. In this model, individuals are naturally born into the simulation as susceptible or with no immunity. \cite{incremental} Once individuals are infected and have no access to treatment, they stay infected and remain contagious for the duration of their life, continuing to come into contact with the susceptible population.In the absence of vital processes such as birth and death, every susceptible individual will eventually become infected. \cite{AHMETOLAN202219}
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width = 0.70\textwidth, height=3cm]{images/SI.png}}
+	
+	\caption{An illustration depicting the progression of states within the Susceptible-Infected Compartmental Model. }%
+	\label{1}%
+\end{figure}
+
+ \hspace{1 cm}Figure\ref{1} shows the two populations in the SI Model. The Susceptible (S) and Infected (I) compartments. The $\alpha$ represents the rate of transmission at which the susceptible agents become infected. The SI model can be expressed as the following ordinary differential equation (ODE) in equation \ref{2.1}.
+
+\begin{equation}
+		\begin{split}
+		S' &= -\frac{\alpha SI}{N}\\
+		I' &= \frac{\alpha SI}{N}
+		\label{2.1}
+	\end{split}
+\end{equation}
+
+
+
+
+The illustration shows that it starts with susceptible and proceeds to infection . An individual can become infected at a specific time t with an infection rate denoted as $\alpha$. The change in the number of susceptible individual as time progresses is denoted as $S'$.  
+
+Additionally, the change in the number  of infected individual as time progresses is represented by $I'$ where  $N = S + I$  is the total population.  Notice how the change in the number of susceptible individuals decreases (-) while the number of infected individuals increases. 
+
+\subsection{ Susceptible-Infected-Recovered (SIR) Model}
+
+\begin{figure}[H]
+	\centering
+{\includegraphics[width = 0.70\textwidth, height=3cm]{images/SIR.png}}
+\caption{An illustration depicting the progression of states within the Susceptible-Infected-Recovered Compartmental Model. }%
+	\label{fig:2}
+\end{figure}
+
+Figure \ref{fig:2} describes the SIR model and its transitions between the compartments. It is one of the fundamental compartmental models, and several extensions of this basic model exist, including the SIR model. The SIR model comprises of three compartments: 'S' for the number of susceptible individuals, 'I' for the number of infectious individuals, and 'R' for the number of recovered, deceased, or immune individuals. The SI model can be expressed as the following ordinary differential equation (ODE). \cite{SIR}
+
+\begin{equation}
+	\begin{split}
+		S' &= -\frac{\alpha SI}{N}\\
+		I' &= \frac{\alpha SI}{N} - \delta I \\
+		R' &= \delta I		
+		\label{2.2}
+	\end{split}
+\end{equation}
+
+
+Equation S' describes the dynamics of the reduction of susceptible individuals, where $\beta$ is the average number of people who come into contact with another person multiplied by the likelihood of infection in that contact.\cite{abouismail_2020_compartmental} Equation I' represents the variation for the I compartment, where the new infected ones according to the rate are added and those who were recovered or died are removed, proportional to the parameter $\gamma = \frac{1}{D}$, where D is the number of days that one individual stays infected. The last equation explains the variation on the compartment of the recovered/ mortality patients, which is also directly proportional to $\gamma$. 
+
+\subsection{Susceptible-Exposed-Infected-Recovered (SEIR) Model}
+\begin{figure}[H]
+	\centering
+{\includegraphics[width = 0.80\textwidth, height=3cm]{images/SEIR.png}}
+\caption{An illustration depicting the progression of states within the Susceptible-Exposed-Infected-Recovered Compartmental Model. }%
+	\label{fig:3}
+\end{figure}
+
+This model as seen in Figure \ref{fig:3} consists of 4 compartments \cite{bjrnstad-2020}, mainly the Susceptible (S), Exposed (E), Infected (I) and Recovered (R). It is a model proposed where after a specific period, the susceptible person can get infectious. This model is named the SEIR model and can be presented as an Ordinary Differential Equation (ODE) as presented in Equation \ref{2.3} . 
+
+\begin{equation}
+	\begin{split}
+		S' &= -\frac{\beta SI}{N}\\
+		E' &= \frac{\beta SI}{N} - \alpha E \\
+		I' &=  \alpha E - \delta I \\
+		R' &= \delta I 
+		\label{2.3}  	
+	\end{split}
+\end{equation}
+
+
+Analogous to the SIR representation, the sum of the compartments, which are now S(t) + E(t) + I(t) + R(t) = N, results in the total population (Fig. \ref{fig:3}). The parameters considered for the SEIR model are described below: 
+
+\begin{itemize}
+	\item Beta ($\beta$) - probability susceptible–infected contact results in a new exposure;
+	\item Delta ($\delta$) - probability of one infected subject gets recovered
+	\item  Alpha ($\alpha$) -  probability of one exposed person becoming infected.
+\end{itemize}
+
+\subsection{Agent-Based Modelling}
+\vspace{8pt} %
+
+An agent-based model constitutes a form of computer simulation wherein agents interact with each other within a defined environment. These agents' interactions and behaviors adhere to a set of programmed rules. Since agents can autonomously make decisions within the model based on these rules, the model is capable of capturing unforeseen collective phenomena arising from the combination of individual behaviors. 
+
+Agent-based models (ABMs) belong to a category of computational models that utilize computer simulations to replicate the activities and interactions of autonomous agents, thereby assessing how these interactions influence the system as a whole. The agent-based approach places significant emphasis on learning through the interactions between agents and their environments. This approach aligns with a recent trend in computational models of learning, which seeks to develop novel methodologies for studying autonomous agents in virtual or real-world contexts.
+
+For this simulation, GAMA was employed, a powerful platform for implementing Agent-Based Modeling (ABM). GAMA, short for Generalized Architecture for Modeling Anything, offers a versatile and programmable environment tailored to simulate diverse social and natural phenomena. Its robust framework enables the creation and analysis of agent-based models, facilitating researchers' exploration of complex systems and observation of emergent behavior.
+
+  \subsection{ Simulation Space}
+  \label{SSpace}
+\begin{figure}[H]
+	\centering
+		{\includegraphics[width = 0.70\textwidth, height=9cm]{images/SSpace.png}}
+	\caption{Illustration of the simulation space of the implemented model in GAMA}
+	\label{space}
+\end{figure}
+
+
+Figure \ref{space} provides a comprehensive visualization of the simulation domain utilized in implementing the model within the GAMA platform. The illustration delineates the spatial boundaries of the simulation along both the x and y axes, denoted by the intervals $[L_x, U_x]$ and $[L_y, U_y]$, respectively. These boundaries define the extent of the simulated environment, encompassing the entire area where agent interactions and dynamics unfold. By establishing these spatial constraints, the model ensures a realistic representation of the simulated scenario, facilitating the accurate evaluation of agent behaviors and disease transmission dynamics within the defined space.
+
+\subsection{Agents}
+
+\textbf{\large{Position and Assignment of Agent into the Simulation}}
+\label{Pos}
+\begin{figure}[H]
+	\centering{
+	\includegraphics[width=10cm, height=8cm]{images/SI_Location.JPG}}
+	\caption{Illustration of the x and y positions of agents in a 2-D plane}
+	\label{pos}
+\end{figure}
+
+The initial position of each agent is determined by the following equations:
+\begin{align*}
+	a &= CL_x + \text{rnd}(0,1) \cdot (CU_x - CL_x) \\
+	b &= CL_y + \text{rnd}(0,1) \cdot (CU_y - CL_y)
+\end{align*}
+
+Here, $a$ represents a point on the x-axis plane, and $b$ represents a point on the y-axis plane. Combining these points yields coordinates such as $(a_x, b_y)$, where $x \in (1, 2, 3,...n)$ and $y \in (1, 2, 3,...,n)$.
+
+In the figure, if an initial susceptible agent, denoted $s_1$, is located at coordinates $(a_1, b_1)$, then another susceptible agent $s_2$ must be assigned different coordinates, ensuring $s_{1(loc)} \neq s_{2(loc)}$.
+
+This distinctive positioning principle is maintained for all agents in the susceptible-exposed-infected-recovered (SEIR) model. Each agent is assigned a unique coordinate within the simulation space to prevent overlap. Furthermore, every agent is designated a singular health status, which could be susceptible $(s)$, exposed $(e)$, infected $(i)$, or recovered $(r)$. This approach guarantees spatial diversity and individual health status differentiation among all agents participating in the simulation.
+
+\subsubsection{State of the Agents}
+\label{state}
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=10cm, height=10cm]{images/SEIR_Agents.jpg}
+	\caption{Color-coded representation of agents in the simulation, with distinct colors indicating their current
+		health status (Susceptible,Exposed, Infected, Recovered)}
+	\label{agent1}}
+\end{figure}
+
+
+As represented in Figure \ref{agent1}. The initial state of the agents is defined at the start of the simulation at t = 0. Each agent can be assigned to four different compartments \textbf{S}(t), \textbf{E}(t), \textbf{I}(t), \textbf{R}(t) which represents susceptible, exposed, infected, and recovered state respectively. This distribution is visible in the simulation space during the first iteration $(t = 0)$. The agents in each compartment are initialized and can be represented by 
+
+\begin{align}
+	\textbf{S}_{b,k}^a(t) &= s_{b,1}^a(t), s_{b,2}^a(t), \ldots, s_{b,S}^a(t)\\
+	\textbf{E}_{b,k}^a(t) &= e_{b,1}^a(t), e_{b,2}^a(t), \ldots, e_{b,I}^a(t)\\
+	\textbf{I}_{b,k}^a(t) &= i_{b,1}^a(t), i_{b,2}^a(t), \ldots, i_{b,I}^a(t)\\
+	\textbf{R}_{b,k}^a(t) &= r_{b,1}^a(t), r_{b,2}^a(t), \ldots, r_{b,I}^a(t)
+\end{align}
+
+where:
+\begin{itemize}
+	\item \quad $S$: total number of susceptible agents at each time $t$.
+	\item \quad $E$: total number of exposed agents at each time $t$.
+	\item \quad $I$: total number of infected agents at each time $t$.
+	\item \quad $R$ : total number of recovered agents at each time $t$.
+	\item \quad $a$: the x-axis location of the agent represented by $(1, 2, 3, \ldots, n)$.
+	\item \quad $b$: the y-axis location of the agent represented by $(1, 2, 3, \ldots, n)$.
+	\item \quad $k$: a specific identifier for each agent represented by $(1, 2, 3, \ldots, n)$.
+\end{itemize}
+
+The composition of  susceptible,exposed, infected and recovered agents forms the total population, as expressed by the equation:
+
+\[
+\textbf{P}(t) = \textbf{S}(t) +\textbf{E}(t) + \textbf{I}(t) + \textbf{R}(t)
+\]
+
+Here, \textbf{P}(t) denotes the total population at time 0, while \textbf{S}(t), \textbf{E}(t), \textbf{I}(t) and \textbf{R}(t) signify the counts of susceptible, exposed, infected, and recovered agents, respectively. This representation provides a visual understanding of the distribution of health states in the initial stage of the simulation.
+
+\subsubsection{ Movement of Agents}    
+\label{agent_move}
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=8cm, height=7cm]{images/SI_Movement.JPG}}
+	\caption{Illustration of the movement rule of the agent in the SI model.}
+	\label{move}
+\end{figure}
+
+Figure \ref{move} reveals the movement dynamics of agents within the simulation space. Specifically, the movement of a susceptible agent $(s_1)$ at time $t+1$ is governed by the parameter $r$, representing the allowable distance of movement. The agent's new position is determined using the following equations:
+
+\begin{align*}
+	a_{t+1} &= a_t + \text{rnd}(-1,1) \cdot d \\
+	b_{t+1} &= b_t + \text{rnd}(-1,1) \cdot d
+\end{align*}
+
+
+The given equations describe the update or calculation of the new location of an agent in a two-dimensional space $(a, b)$ at time $t+1$ based on its current location at time $t$. Here, $a_{(t+1)}$ represents the new x-axis location of the agent at time $t + 1$. It is determined by taking the current x-axis location $(a_t)$, and adding a random value between -1 and 1 (inclusive) multiplied by a constant $d$. The $rnd(-1,1)$ term generates a random number between -1 and 1. Similarly, $b_{(t+1)}$  this represents the new y-axis location of the agent time $t + 1 $. It is determined by taking the current y-axis location $b_t$, and adding a random value between -1 and 1 also multiplied by the constant d. 
+
+These equations describe a stochastic process where the agent's new location is influenced by its current location $(a_t, b_t)$ and a random perturbation in both the c and y directions. The magnitude of the perturbation is controlled by the constant d.
+
+In addition, the simulation visually represents the movement dynamics of each individual within the defined space. Individuals are capable of navigating freely within the simulation space, with their movements visible as the simulation progresses.
+
+At the initiation of the simulation, when the social distancing variable is set to false, agents enjoy unrestricted mobility within the simulation space, constrained only by the specified limits $[L_x, U_x]$ and $[L_y, U_y]$.
+
+\subsection{Exposure and Infection Rule}
+\label{rules}
+\begin{figure}[H]
+	\centering
+	\subfigure[Initial configuration of the SEIR model at time $(t)$]{
+		\includegraphics[width = 2.4in]{images/SEIR a.png}
+		\label{expo1} % Moved label inside the subfigure
+	}
+	\quad
+	\subfigure[Final configuration of the SEIR model at time $(t+1)$]{
+		\includegraphics[width = 2.4in]{images/SEIR b.png}
+		\label{expo2}
+	}
+	\caption{Exposure and Infection Rule of the SEIR Model}
+\end{figure}
+
+The exposure rule in the SEIR (Susceptible-Exposed-Infectious-Recovered) model outlines how susceptible individuals transition to an exposed state upon contact with infected individuals. In Figure \ref{expo1}, the initial state of the SEIR model at time \(t\) is depicted. Notably, \(s_1\) and \(s_8\) are identified within the proximity range of infection for \(i_1\) and \(i_2\) respectively. According to the exposure rule, susceptible individuals like \(s_1\) and \(s_8\) are at risk of infection when near infectious individuals.
+
+
+Figure \ref{expo2} illustrates the subsequent state at time \(t+1\), displaying the outcomes of the exposure rule. Due to their proximity to infected individuals in the previous configuration, \(s_1\) transitions from susceptible to exposed, indicating exposure to the infection. Simultaneously, \(s_8\) shifts from susceptible to exposed \(e_2\). This transition underscores the dynamic nature of the SEIR model, where exposure to infectious agents prompts susceptible individuals to enter an exposed state, setting the stage for further infection dynamics in the ongoing simulation. The exposure rule captures the crucial role of interactions and proximity in the transmission dynamics of infectious diseases within the simulated population.\\
+
+
+
+
+
+

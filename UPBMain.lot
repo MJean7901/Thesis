@@ -1,0 +1,69 @@
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Variables used for the GAMA Simulation of the SEIR Model }}{25}{table.caption.16}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Variables used for the GAMA Simulation of the Scenario 1.1 which has a 0\% Protection Rate}}{45}{table.caption.34}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Variables used for the GAMA Simulation of the Scenario 1.1 which has a 0\% Protection Rate}}{47}{table.caption.37}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Variables used for the GAMA Simulation of Scenario 1.2 with a 50\% Protection Rate}}{49}{table.caption.40}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Variables used for the GAMA Simulation of Scenario 1.2 with a 75\% Protection Rate}}{51}{table.caption.43}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Variables used for the GAMA Simulation of Scenario 1.2 with a 100\% Protection Rate}}{53}{table.caption.46}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Variables used for the GAMA Simulation of Scenario 2.1 with a 0\% Initial Exposure Rate}}{55}{table.caption.49}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Variables used for the GAMA Simulation of the Scenario 2.2 which has a 25\% Initial Exposure Rate}}{57}{table.caption.52}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Variables used for the GAMA Simulation of Scenario 2.3 with a 50\% Initial Exposure Rate}}{59}{table.caption.55}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Variables used for the GAMA Simulation of Scenario 2.4 with a 75\% Initial Exposure Rate}}{61}{table.caption.58}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Variables used for the GAMA Simulation of Scenario 3.1 where there's no implementation of Lockdown and Quarantine Area}}{64}{table.caption.61}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Variables used for the GAMA Simulation of Scenario 3.2 where there's an implementation of Lockdown but no Quarantine Area}}{68}{table.caption.65}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Variables used for the GAMA Simulation of Scenario 3.3 where there's an implementation of Quarantine Area but no Lockdown}}{71}{table.caption.69}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Variables used for the GAMA Simulation of Scenario 3.4 where there's an implementation of Lockdown and Quarantine Area}}{75}{table.caption.73}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 0\%.}}{80}{table.caption.77}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 25\%.}}{82}{table.caption.79}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 50\%.}}{84}{table.caption.81}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 75\%.}}{86}{table.caption.83}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 100\%.}}{87}{table.caption.85}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Highest Infection Rates across different Protection Rates (0\%, 25\%. 50\%. 75\%, 100\%) where n= 225, int\_expo = 0.25, int\_inf= 0.25, cycle = 31680 cycles }}{93}{table.caption.89}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 0\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 25\%.}}{95}{table.caption.91}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 25\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 25\%.}}{97}{table.caption.93}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 50\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 25\%.}}{99}{table.caption.95}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 75\%, \textit {init\_inf} = 25\%, \textit {protection\_rate} = 25\%.}}{101}{table.caption.97}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces Highest Percentage of Infection across different Exposure Rates (0\%, 25\%. 50\%. 75\%,) where N= 2225, protection\_rate = 0.50, int\_inf= 0.25, cycle = 31680 cycles }}{106}{table.caption.101}%
+\contentsline {table}{\numberline {5.12}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 10\%, \textit {init\_inf} = 10\%, \textit {protection\_rate} = 50\%.}}{109}{table.caption.104}%
+\contentsline {table}{\numberline {5.13}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 10\%, \textit {init\_inf} = 10\%, \textit {protection\_rate} = 50\%.}}{112}{table.caption.107}%
+\contentsline {table}{\numberline {5.14}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 10\%, \textit {init\_inf} = 10\%, \textit {protection\_rate} = 50\%.}}{114}{table.caption.109}%
+\contentsline {table}{\numberline {5.15}{\ignorespaces Maximum percentage of susceptible, exposed, infected, and recovered individuals across a 220-day period with Lockdown and No Quarantine Area, where \textit {basenum\_human} = 2225 individuals, \textit {time\_cycle} = 31680 cycles, \textit {init\_expo} = 10\%, \textit {init\_inf} = 10\%, \textit {protection\_rate} = 50\%.}}{116}{table.caption.112}%
+\contentsline {table}{\numberline {5.16}{\ignorespaces Highest Infection Rates across different scenarios involving Lockdown and having Quarantine Area where N= 2225, int\_expo = 0.10, int\_inf= 0.10, cycle = 31680 cycles }}{120}{table.caption.115}%
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {B.1}{\ignorespaces 0\% Exposed Rate}}{134}{table.B.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {C.1}{\ignorespaces 25\% Exposed Rate}}{136}{table.C.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {D.1}{\ignorespaces 50\% Exposed Rate}}{138}{table.D.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {E.1}{\ignorespaces 75\% Exposed Rate}}{140}{table.E.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {F.1}{\ignorespaces 0\% Exposed Rate}}{142}{table.F.1}%
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {H.1}{\ignorespaces 0\% Initial Exposure Rate}}{145}{table.H.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {I.1}{\ignorespaces 25\% Initial Exposure Rate}}{147}{table.I.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {J.1}{\ignorespaces 50\% Initial Exposure Rate}}{149}{table.J.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {K.1}{\ignorespaces 75\% Initial Exposure Rate}}{151}{table.K.1}%
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {M.1}{\ignorespaces No Lockdown and No Quarantine Area}}{154}{table.M.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {N.1}{\ignorespaces No Lockdown and No Quarantine Area}}{156}{table.N.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {O.1}{\ignorespaces Quarantine Area and No Lockdown}}{158}{table.O.1}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {P.1}{\ignorespaces Table for Quarantine Area and Lockdown}}{160}{table.P.1}%
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
